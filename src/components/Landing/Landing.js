@@ -9,6 +9,10 @@ function Landing() {
       <button>
         <Link to="/canvas">Go to Canvas</Link>
       </button>
+      <br></br>
+      <button>
+        <Link to="/join">Go to Join page</Link>
+      </button>
     </section>
   );
 }
