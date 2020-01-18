@@ -12,7 +12,7 @@ function Canvas() {
   };
 
   const load = () => {
-    console.log(canvas.current.loadSaveData(saved, false));
+    if (saved) canvas.current.loadSaveData(saved, false);
   };
 
   useEffect(() => {});
@@ -26,6 +26,8 @@ function Canvas() {
             canvasWidth={1200}
             canvasHeight={550}
             disabled={false}
+            lazyRadius={0}
+            hideInterface={false}
           />
           <button onClick={save}>Save</button>
           <button onClick={load}>Load</button>
