@@ -17,22 +17,24 @@ function Canvas() {
 
   useEffect(() => {});
 
-  if (!isMobile) {
-    return (
-      <section className="Canvas">
-        <CanvasDraw
-          ref={canvas}
-          canvasWidth={1200}
-          canvasHeight={550}
-          disabled={false}
-        />
-        <button onClick={save}>Save</button>
-        <button onClick={load}>Load</button>
-      </section>
-    );
-  } else {
-    <h1>Only Desktop is supported!</h1>;
-  }
+  return (
+    <section className="Canvas">
+      {!isMobile ? (
+        <div>
+          <CanvasDraw
+            ref={canvas}
+            canvasWidth={1200}
+            canvasHeight={550}
+            disabled={false}
+          />
+          <button onClick={save}>Save</button>
+          <button onClick={load}>Load</button>
+        </div>
+      ) : (
+        <h1>Mobile not supported</h1>
+      )}
+    </section>
+  );
 }
 
 export default Canvas;
