@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import "./Join.scss";
 import { useHistory } from "react-router";
@@ -10,7 +10,6 @@ function SignIn() {
   const history = useHistory();
 
   const dispatch = useDispatch();
-  const user = useSelector(state => state.contactReducer);
 
   const handleSubmit = () => {
     dispatch({ type: "SET_INFO", payload: { name, room } });

@@ -11,20 +11,24 @@ import io from "socket.io-client";
 let socket;
 
 function Canvas() {
-  const user = useSelector(state => state.contactReducer);
-  console.log(user);
-
+  const userInfo = useSelector(state => state.contactReducer);
+  const { name, room } = userInfo;
+  console.log(name, room);
   const canvas = useRef();
 
   useEffect(() => {
-    socket = io.connect("http://localhost:5000/");
-
+    if (process.env.NODE_ENV === "production") {
+      socket = io.connect("https://drawing-game-server-2.herokuapp.com");
+    } else {
+      socket = io.connect("localhost:5000");
+    }
+    socket.emit("joinRoom", room);
     socket.on("updateData", data => {
       if (canvas.current && data) {
         canvas.current.loadSaveData(data, true);
       }
     });
-  }, []);
+  }, [room]);
 
   const undo = () => {
     if (canvas) canvas.current.undo();
@@ -35,7 +39,10 @@ function Canvas() {
       {!isMobile ? (
         <div
           onMouseUp={() => {
-            socket.emit("drawingData", canvas.current.getSaveData());
+            socket.emit("drawingData", {
+              data: canvas.current.getSaveData(),
+              room
+            });
           }}
         >
           <CanvasDraw
