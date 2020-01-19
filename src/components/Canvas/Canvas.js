@@ -3,10 +3,10 @@ import React, { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import "./Canvas.scss";
-import { isMobile } from "react-device-detect";
 import CanvasDraw from "react-canvas-draw";
 
 import io from "socket.io-client";
+import Chat from "../Chat/Chat";
 
 let socket;
 
@@ -30,14 +30,12 @@ function Canvas() {
     });
   }, [room]);
 
-  const undo = () => {
-    if (canvas) canvas.current.undo();
-  };
-
   return (
     <section className="Canvas">
-      {!isMobile ? (
+      <div className="Container">
+        <Chat />
         <div
+          className="CanvasContainer"
           onMouseUp={() => {
             socket.emit("drawingData", {
               data: canvas.current.getSaveData(),
@@ -47,17 +45,14 @@ function Canvas() {
         >
           <CanvasDraw
             ref={canvas}
-            canvasWidth={1200}
-            canvasHeight={550}
+            canvasWidth={"65vw"}
+            canvasHeight={"90vh"}
             disabled={false}
             lazyRadius={0}
             hideInterface={false}
           />
-          <button onClick={undo}>Undo</button>
         </div>
-      ) : (
-        <h1>Mobile not supported</h1>
-      )}
+      </div>
     </section>
   );
 }

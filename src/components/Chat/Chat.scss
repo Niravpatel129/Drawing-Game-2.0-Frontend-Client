@@ -1,0 +1,14 @@
+.Chat {
+  position: relative;
+  width: 300px;
+  border-right: none;
+  background-color: whitesmoke;
+
+  input {
+    position: absolute;
+    width: 100%;
+    height: 6%;
+    font-size: 25px;
+    bottom: 1px;
+  }
+}
