@@ -26,6 +26,9 @@ function Chat() {
 
   return (
     <div className="Chat">
+      <div className="title">
+        <h1>ChatBox</h1>
+      </div>
       <div className="messages" ref={messagesRef}>
         {messages.map((e, index) => {
           return e;
