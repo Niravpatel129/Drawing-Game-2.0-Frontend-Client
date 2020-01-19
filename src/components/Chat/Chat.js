@@ -35,9 +35,10 @@ function Chat() {
   };
 
   const renderMessage = () => {
-    return msg.map((e, index) => {
-      return <Message name={e.name} message={e.message} key={index} />;
-    });
+    if (msg)
+      return msg.map((e, index) => {
+        return <Message name={e.name} message={e.message} key={index} />;
+      });
   };
 
   return (
