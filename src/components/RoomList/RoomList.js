@@ -12,6 +12,7 @@ function RoomList() {
 
   useEffect(() => {
     socket.on("sendAllRooms", res => {
+      console.log(res);
       if (res.length > 0) {
         changeTitle("Rooms");
       }
@@ -22,7 +23,6 @@ function RoomList() {
   const renderRooms = () => {
     if (rooms.length > 0) {
       return rooms.map((i, index) => {
-        console.log(i);
         return (
           <div className="list-item" key={index}>
             <h3>Room {i.roomId || "Room Name"}</h3>

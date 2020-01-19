@@ -56,9 +56,6 @@ function Canvas() {
           />
         </div>
       </div>
-      <button>
-        <a href="/">Somewhere</a>
-      </button>
     </section>
   );
 }
