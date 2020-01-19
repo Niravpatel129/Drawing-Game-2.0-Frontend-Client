@@ -1,8 +1,13 @@
 import React, { useEffect, useContext, useState } from "react";
 import "./RoomList.scss";
 import SocketContext from "../../context";
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
 
 function RoomList() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   let { socket } = useContext(SocketContext);
   let [rooms, updateRoomList] = useState([]);
   let [title, changeTitle] = useState("No Rooms");
@@ -20,6 +25,17 @@ function RoomList() {
     });
   }, [socket, rooms]);
 
+  const redirect = room => {
+    const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
+    if (localStorageData) {
+      dispatch({
+        type: "SET_INFO",
+        payload: { name: localStorageData.name, room }
+      });
+      history.push("/canvas");
+    }
+  };
+
   const renderRooms = () => {
     if (rooms.length > 0) {
       return rooms.map((i, index) => {
@@ -27,7 +43,9 @@ function RoomList() {
           <div className="list-item" key={index}>
             <h3>Room {i.roomId || "Room Name"}</h3>
             <h4>{i.users.length}/4</h4>
-            <button>Join</button>
+            <button onClick={e => redirect(i.roomId)}>
+              {i.users.length > 4 ? "FULL" : "Join"}
+            </button>
           </div>
         );
       });

@@ -32,6 +32,13 @@ function Canvas() {
     });
   }, [room, name, socket, localStorageData]);
 
+  useEffect(() => {
+    return () => {
+      socket.emit("disconnect");
+      console.log("will unmount");
+    };
+  }, []);
+
   return (
     <section className="Canvas">
       <div className="Container">
