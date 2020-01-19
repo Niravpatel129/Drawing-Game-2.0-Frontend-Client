@@ -9,7 +9,7 @@ function SignIn() {
   const dispatch = useDispatch();
   const loginInfo = useSelector(state => state.userInfoReducer);
 
-  const [name, setName] = useState(loginInfo.name || "test");
+  const [name, setName] = useState(loginInfo.name || "Guest");
   const [room, setRoom] = useState(12);
 
   const handleSubmit = () => {

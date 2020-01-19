@@ -33,7 +33,13 @@ function RoomList() {
         payload: { name: localStorageData.name, room }
       });
       history.push("/canvas");
+    } else {
+      history.push("/login");
     }
+  };
+
+  const newRoom = () => {
+    history.push("/join");
   };
 
   const renderRooms = () => {
@@ -57,6 +63,9 @@ function RoomList() {
       <div className="Container">
         <h1>{title}</h1>
         {renderRooms()}
+      </div>
+      <div onClick={newRoom} className="myButton">
+        New Room
       </div>
     </div>
   );

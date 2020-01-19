@@ -37,7 +37,7 @@ function Canvas() {
       socket.emit("disconnect");
       console.log("will unmount");
     };
-  }, []);
+  }, [socket]);
 
   return (
     <section className="Canvas">
