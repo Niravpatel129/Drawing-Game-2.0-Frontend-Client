@@ -29,7 +29,6 @@ function Chat() {
   const submitMessage = e => {
     if (e.charCode === 13) {
       if (input) {
-        // on key press enter
         socket.emit("chatMessage", { name: localStorageData, room, input });
       }
       changeInput("");
