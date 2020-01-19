@@ -3,6 +3,13 @@
   width: 300px;
   border-right: none;
   background-color: whitesmoke;
+  height: 90vh;
+
+  .messages {
+    display: list-item;
+    overflow: scroll;
+    height: 93%;
+  }
 
   input {
     position: absolute;
