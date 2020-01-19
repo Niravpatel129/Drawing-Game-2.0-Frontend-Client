@@ -8,6 +8,7 @@ import Join from "./components/Join/Join";
 import SocketProvider from "./provider";
 import RoomList from "./components/RoomList/RoomList";
 import Login from "./components/Login/Login";
+import Logout from "./components/Logout/Logout";
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/login" exact>
             <Login />
+          </Route>
+          <Route path="/logout" exact>
+            <Logout />
           </Route>
         </BrowserRouter>
       </div>

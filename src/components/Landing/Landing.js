@@ -21,6 +21,10 @@ function Landing() {
       <button>
         <Link to="/login">Go to Login page</Link>
       </button>
+      <br></br>
+      <button>
+        <Link to="/logout">Go to Logout page</Link>
+      </button>
     </section>
   );
 }
