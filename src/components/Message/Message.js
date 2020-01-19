@@ -1,10 +1,7 @@
 import React from "react";
 import "./Message.scss";
 
-function Message({ message }) {
-  const generateRandomNumber = () => {
-    return Math.random() * (255 - 0) + 0;
-  };
+function Message({ name, message }) {
   return (
     <>
       <div className="MessageContainer">
@@ -13,13 +10,7 @@ function Message({ message }) {
           alt="https://www.w3schools.com/w3images/bandmember.jpg"
         ></img>
         <div className="Message">
-          <h4
-            style={{
-              color: `rgba(${generateRandomNumber()}, ${generateRandomNumber()}, ${generateRandomNumber()})`
-            }}
-          >
-            RedSkyez
-          </h4>
+          <h4>{name || "Guest"}</h4>
           <p>{message || "You need to enable JavaScript to run this app."}</p>
         </div>
       </div>

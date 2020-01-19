@@ -1,12 +1,24 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "./Chat.scss";
 import Message from "../Message/Message";
+import { useSelector } from "react-redux";
+import SocketContext from "../../context";
 
 function Chat() {
-  const [messages, addMessage] = useState([]);
+  let { socket } = useContext(SocketContext);
+
+  const [msg, addMsg] = useState([]);
   const [input, changeInput] = useState("");
 
+  const { name, room } = useSelector(state => state.contactReducer);
+
   const messagesRef = useRef();
+
+  useEffect(() => {
+    socket.on("updateMessage", res => {
+      addMsg(res);
+    });
+  }, [socket]);
 
   useEffect(() => {
     messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
@@ -15,13 +27,17 @@ function Chat() {
   const submitMessage = e => {
     if (e.charCode === 13) {
       if (input) {
-        addMessage([
-          ...messages,
-          <Message message={input} key={messages.length + 1} />
-        ]);
+        // on key press enter
+        socket.emit("chatMessage", { name, room, input });
       }
       changeInput("");
     }
+  };
+
+  const renderMessage = () => {
+    return msg.map((e, index) => {
+      return <Message name={e.name} message={e.message} key={index} />;
+    });
   };
 
   return (
@@ -30,9 +46,7 @@ function Chat() {
         <h1>ChatBox</h1>
       </div>
       <div className="messages" ref={messagesRef}>
-        {messages.map((e, index) => {
-          return e;
-        })}
+        {renderMessage()}
       </div>
       <input
         value={input}

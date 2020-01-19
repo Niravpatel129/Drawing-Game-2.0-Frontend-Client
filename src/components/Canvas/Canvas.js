@@ -1,39 +1,39 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 
 import { useSelector } from "react-redux";
 
 import "./Canvas.scss";
 import CanvasDraw from "react-canvas-draw";
 
-import io from "socket.io-client";
 import Chat from "../Chat/Chat";
+import SocketContext from "../../context";
 
-let socket;
+// let socket;
 
 function Canvas() {
-  const userInfo = useSelector(state => state.contactReducer);
-  const { name, room } = userInfo;
-  console.log(name, room);
+  let { socket } = useContext(SocketContext);
+
+  const { name, room } = useSelector(state => state.contactReducer);
   const canvas = useRef();
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
-      socket = io.connect("https://drawing-game-server-2.herokuapp.com");
-    } else {
-      socket = io.connect("localhost:5000");
-    }
-    socket.emit("joinRoom", room);
+    socket.emit("join", { name, room }, () => {
+      socket.emit("disconnect");
+      alert("Error");
+      socket.off();
+    });
+
     socket.on("updateData", data => {
       if (canvas.current && data) {
         canvas.current.loadSaveData(data, true);
       }
     });
-  }, [room]);
+  }, [room, name, socket]);
 
   return (
     <section className="Canvas">
       <div className="Container">
-        <Chat />
+        <Chat socket={socket} />
         <div
           className="CanvasContainer"
           onMouseUp={() => {
