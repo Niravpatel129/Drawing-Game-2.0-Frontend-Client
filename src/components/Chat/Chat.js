@@ -10,7 +10,9 @@ function Chat() {
   const [msg, addMsg] = useState([]);
   const [input, changeInput] = useState("");
 
-  const { name, room } = useSelector(state => state.contactReducer);
+  const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
+
+  const { room } = useSelector(state => state.contactReducer);
 
   const messagesRef = useRef();
 
@@ -28,7 +30,7 @@ function Chat() {
     if (e.charCode === 13) {
       if (input) {
         // on key press enter
-        socket.emit("chatMessage", { name, room, input });
+        socket.emit("chatMessage", { name: localStorageData, room, input });
       }
       changeInput("");
     }
@@ -37,7 +39,14 @@ function Chat() {
   const renderMessage = () => {
     if (msg)
       return msg.map((e, index) => {
-        return <Message name={e.name} message={e.message} key={index} />;
+        return (
+          <Message
+            src={e.name.imageUrl}
+            name={e.name.name}
+            message={e.message}
+            key={index}
+          />
+        );
       });
   };
 

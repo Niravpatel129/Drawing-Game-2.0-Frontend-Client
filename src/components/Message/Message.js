@@ -1,12 +1,12 @@
 import React from "react";
 import "./Message.scss";
 
-function Message({ name, message }) {
+function Message({ name, message, src }) {
   return (
     <>
       <div className="MessageContainer">
         <img
-          src="https://www.w3schools.com/w3images/bandmember.jpg"
+          src={src || "https://www.w3schools.com/w3images/bandmember.jpg"}
           alt="https://www.w3schools.com/w3images/bandmember.jpg"
         ></img>
         <div className="Message">
