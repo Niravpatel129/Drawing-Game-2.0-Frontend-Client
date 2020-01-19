@@ -13,6 +13,14 @@ function Landing() {
       <button>
         <Link to="/join">Go to Join page</Link>
       </button>
+      <br></br>
+      <button>
+        <Link to="/roomlist">Go to Room List</Link>
+      </button>
+      <br></br>
+      <button>
+        <Link to="/login">Go to Login page</Link>
+      </button>
     </section>
   );
 }

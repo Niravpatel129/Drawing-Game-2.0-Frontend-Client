@@ -1,23 +1,25 @@
 import React, { useRef, useEffect, useContext } from "react";
 
-import { useSelector } from "react-redux";
-
 import "./Canvas.scss";
 import CanvasDraw from "react-canvas-draw";
 
 import Chat from "../Chat/Chat";
 import SocketContext from "../../context";
+import { useSelector } from "react-redux";
 
 // let socket;
 
 function Canvas() {
   let { socket } = useContext(SocketContext);
-
+  const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
   const { name, room } = useSelector(state => state.contactReducer);
+
   const canvas = useRef();
 
   useEffect(() => {
-    socket.emit("join", { name, room }, () => {
+    let googleUserInfo = localStorageData;
+
+    socket.emit("join", { name, room, googleUserInfo }, () => {
       socket.emit("disconnect");
       alert("Error");
       socket.off();
@@ -28,7 +30,7 @@ function Canvas() {
         canvas.current.loadSaveData(data, true);
       }
     });
-  }, [room, name, socket]);
+  }, [room, name, socket, localStorageData]);
 
   return (
     <section className="Canvas">
@@ -54,6 +56,9 @@ function Canvas() {
           />
         </div>
       </div>
+      <button>
+        <a href="/">Somewhere</a>
+      </button>
     </section>
   );
 }

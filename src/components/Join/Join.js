@@ -1,19 +1,24 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./Join.scss";
 import { useHistory } from "react-router";
 
 function SignIn() {
-  const [name, setName] = useState("test");
-  const [room, setRoom] = useState("test");
   const history = useHistory();
-
   const dispatch = useDispatch();
+  const loginInfo = useSelector(state => state.userInfoReducer);
+
+  const [name, setName] = useState(loginInfo.name || "test");
+  const [room, setRoom] = useState(12);
 
   const handleSubmit = () => {
     dispatch({ type: "SET_INFO", payload: { name, room } });
     history.push("/canvas");
+  };
+
+  const handleNameInputChange = e => {
+    if (!loginInfo) setName(e.target.value);
   };
 
   return (
@@ -25,7 +30,8 @@ function SignIn() {
             placeholder="Name"
             className="joinInput"
             type="text"
-            onChange={event => setName(event.target.value)}
+            value={name}
+            onChange={handleNameInputChange}
           />
         </div>
         <div>
@@ -33,6 +39,7 @@ function SignIn() {
             placeholder="Room"
             className="joinInput mt-20"
             type="text"
+            value={room}
             onChange={event => setRoom(event.target.value)}
           />
         </div>

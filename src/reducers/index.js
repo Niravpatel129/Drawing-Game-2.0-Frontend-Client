@@ -10,6 +10,17 @@ const contactReducer = (state = { name: "Guest", room: 1 }, action) => {
   }
 };
 
+const userInfoReducer = (state = {}, action) => {
+  // Do somethin
+  switch (action.type) {
+    case "LOGIN_USER":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
-  contactReducer
+  contactReducer,
+  userInfoReducer
 });

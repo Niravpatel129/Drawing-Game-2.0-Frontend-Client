@@ -4,3 +4,10 @@ export const setInfo = user => {
     payload: user
   };
 };
+
+export const UserInfo = user => {
+  return {
+    type: "LOGIN_USER",
+    payload: user
+  };
+};

@@ -6,6 +6,8 @@ import Landing from "./components/Landing/Landing";
 import Canvas from "./components/Canvas/Canvas";
 import Join from "./components/Join/Join";
 import SocketProvider from "./provider";
+import RoomList from "./components/RoomList/RoomList";
+import Login from "./components/Login/Login";
 
 function App() {
   return (
@@ -20,6 +22,12 @@ function App() {
           </Route>
           <Route path="/canvas" exact>
             <Canvas />
+          </Route>
+          <Route path="/roomlist" exact>
+            <RoomList />
+          </Route>
+          <Route path="/login" exact>
+            <Login />
           </Route>
         </BrowserRouter>
       </div>

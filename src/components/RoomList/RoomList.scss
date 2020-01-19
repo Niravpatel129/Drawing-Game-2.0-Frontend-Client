@@ -1,0 +1,40 @@
+.RoomList {
+  background-color: #424242;
+  // background-image: url("https://digitalsynopsis.com/wp-content/uploads/2017/02/beautiful-color-gradients-backgrounds-100-vicious-stance.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #424242;
+
+  h1 {
+    color: #ffffff;
+  }
+
+  padding-top: 5%;
+  .Container {
+    margin: 0;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .list-item {
+    background-color: #d6d665;
+    display: flex;
+    border: 1px solid black;
+    width: 40%;
+    height: 10%;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+
+    h3 {
+      width: 50%;
+    }
+
+    button {
+      align-self: center;
+      height: 50%;
+      width: 20%;
+    }
+  }
+}
