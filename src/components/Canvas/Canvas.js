@@ -45,9 +45,9 @@ function Canvas() {
         >
           <CanvasDraw
             ref={canvas}
-            canvasWidth={"65vw"}
-            canvasHeight={"90vh"}
             disabled={false}
+            canvasWidth={900}
+            canvasHeight={600}
             lazyRadius={0}
             hideInterface={false}
           />
