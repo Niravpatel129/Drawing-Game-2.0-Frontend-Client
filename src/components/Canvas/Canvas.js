@@ -46,6 +46,7 @@ function Canvas() {
           <CanvasDraw
             ref={canvas}
             disabled={false}
+            brushRadius={6}
             canvasWidth={900}
             canvasHeight={600}
             lazyRadius={0}
