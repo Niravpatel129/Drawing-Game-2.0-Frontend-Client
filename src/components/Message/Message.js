@@ -1,6 +1,8 @@
 import React from "react";
 import "./Message.scss";
 
+import Emoji from "react-emoji-render";
+
 function Message({ name, message, src }) {
   return (
     <>
@@ -11,7 +13,11 @@ function Message({ name, message, src }) {
         ></img>
         <div className="Message">
           <h4>{name || "Guest"}</h4>
-          <p>{message || "You need to enable JavaScript to run this app."}</p>
+          <p>
+            <Emoji
+              text={message || "You need to enable JavaScript to run this app."}
+            />
+          </p>
         </div>
       </div>
     </>

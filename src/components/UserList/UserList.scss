@@ -1,0 +1,30 @@
+.UserList {
+  border: 1px solid black;
+  width: 200px;
+  background-color: white;
+  position: absolute;
+  top: 1px;
+  right: -81px;
+  z-index: 21;
+  h4 {
+    margin: 0;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: grey;
+    padding: 10px;
+  }
+  .user-card {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 7px;
+    background-color: gainsboro;
+    color: black;
+
+    h3,
+    p {
+      margin: 0;
+      font-size: 16px;
+    }
+  }
+}

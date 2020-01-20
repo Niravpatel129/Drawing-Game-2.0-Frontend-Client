@@ -4,8 +4,10 @@ import "./Canvas.scss";
 import CanvasDraw from "react-canvas-draw";
 
 import Chat from "../Chat/Chat";
+import UserList from "../UserList/UserList";
 import SocketContext from "../../context";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 // let socket;
 
@@ -13,16 +15,17 @@ function Canvas() {
   let { socket } = useContext(SocketContext);
   const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
   const { name, room } = useSelector(state => state.contactReducer);
+  const history = useHistory();
+  const googleUserInfo = localStorageData;
 
   const canvas = useRef();
 
   useEffect(() => {
-    let googleUserInfo = localStorageData;
-
-    socket.emit("join", { name, room, googleUserInfo }, () => {
-      socket.emit("disconnect");
-      alert("Error");
+    socket.emit("join", { name, room, googleUserInfo }, err => {
+      socket.emit("disconnect", googleUserInfo);
+      alert(err || "not sure of the error");
       socket.off();
+      history.push("/");
     });
 
     socket.on("updateData", data => {
@@ -30,14 +33,14 @@ function Canvas() {
         canvas.current.loadSaveData(data, true);
       }
     });
-  }, [room, name, socket, localStorageData]);
+  }, [room, name, socket, localStorageData, history, googleUserInfo]);
 
   useEffect(() => {
     return () => {
-      socket.emit("disconnect");
+      socket.emit("disconnect", googleUserInfo);
       console.log("will unmount");
     };
-  }, [socket]);
+  }, [socket, googleUserInfo]);
 
   return (
     <section className="Canvas">
@@ -61,6 +64,7 @@ function Canvas() {
             lazyRadius={0}
             hideInterface={false}
           />
+          <UserList />
         </div>
       </div>
     </section>
