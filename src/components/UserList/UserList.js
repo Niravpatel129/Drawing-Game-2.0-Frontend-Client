@@ -8,7 +8,6 @@ function UserList() {
 
   useEffect(() => {
     socket.on("getAllUsers", res => {
-      console.log("getAllUsers");
       updateUsers(res);
     });
   }, [socket]);

@@ -8,6 +8,7 @@ import UserList from "../UserList/UserList";
 import SocketContext from "../../context";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import TimerClock from "../TimerClock/TimerClock";
 
 // let socket;
 
@@ -22,8 +23,8 @@ function Canvas() {
 
   useEffect(() => {
     socket.emit("join", { name, room, googleUserInfo }, err => {
-      socket.emit("disconnect", googleUserInfo);
       alert(err || "not sure of the error");
+      socket.emit("disconnectUser", googleUserInfo);
       socket.off();
       history.push("/");
     });
@@ -37,8 +38,8 @@ function Canvas() {
 
   useEffect(() => {
     return () => {
-      socket.emit("disconnect", googleUserInfo);
       console.log("will unmount");
+      socket.emit("disconnectUser", googleUserInfo);
     };
   }, [socket, googleUserInfo]);
 
@@ -65,6 +66,7 @@ function Canvas() {
             hideInterface={false}
           />
           <UserList />
+          <TimerClock />
         </div>
       </div>
     </section>
