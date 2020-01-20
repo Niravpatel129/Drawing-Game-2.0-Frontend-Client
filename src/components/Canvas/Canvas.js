@@ -9,6 +9,7 @@ import SocketContext from "../../context";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import TimerClock from "../TimerClock/TimerClock";
+import WordBlock from "../WordBlock/WordBlock";
 
 // let socket;
 
@@ -67,6 +68,7 @@ function Canvas() {
           />
           <UserList />
           <TimerClock />
+          <WordBlock />
         </div>
       </div>
     </section>
