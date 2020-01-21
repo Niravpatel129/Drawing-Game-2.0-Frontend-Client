@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./Join.scss";
@@ -11,11 +11,21 @@ function SignIn() {
 
   const [name, setName] = useState(loginInfo.name || "Guest");
   const [room, setRoom] = useState(12);
+  const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
 
   const handleSubmit = () => {
     dispatch({ type: "SET_INFO", payload: { name, room } });
     history.push("/canvas");
   };
+
+  useEffect(() => {
+    if (localStorageData) {
+      setRoom(Math.floor(Math.random() * 101));
+      dispatch({ type: "SET_INFO", payload: { name, room } });
+
+      history.push("/canvas");
+    }
+  }, [history, localStorageData, dispatch, name, room]);
 
   const handleNameInputChange = e => {
     if (!loginInfo) setName(e.target.value);

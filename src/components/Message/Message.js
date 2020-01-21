@@ -8,7 +8,10 @@ function Message({ name, message, src }) {
     <>
       <div className="MessageContainer">
         <img
-          src={src || "https://www.w3schools.com/w3images/bandmember.jpg"}
+          src={
+            src ||
+            "https://vignette.wikia.nocookie.net/p__/images/8/83/Meap_with_mustache.png/revision/latest/scale-to-width-down/340?cb=20111211222815&path-prefix=phineasandferbenespanol%2Fes"
+          }
           alt="https://www.w3schools.com/w3images/bandmember.jpg"
         ></img>
         <div className="Message">
