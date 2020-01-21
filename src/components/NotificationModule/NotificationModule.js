@@ -11,7 +11,6 @@ function NotificationModule() {
     setShowing(visibleStatus);
     const timeout = setTimeout(() => {
       dispatch({ type: "SET_NOTIFICATION", payload: false });
-      console.log("HIDE");
     }, 2000);
 
     return () => {

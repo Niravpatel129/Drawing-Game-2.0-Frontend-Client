@@ -5,3 +5,8 @@
 .App {
   font-family: "Open Sans", sans-serif;
 }
+/* GLOBAL  */
+h3,
+h4 {
+  text-transform: capitalize;
+}
