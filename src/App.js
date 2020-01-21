@@ -9,11 +9,13 @@ import SocketProvider from "./provider";
 import RoomList from "./components/RoomList/RoomList";
 import Login from "./components/Login/Login";
 import Logout from "./components/Logout/Logout";
+import NotificationModule from "./components/NotificationModule/NotificationModule";
 
 function App() {
   return (
     <SocketProvider>
       <div className="App">
+        <NotificationModule />
         <BrowserRouter>
           <Route path="/" exact>
             <Landing />

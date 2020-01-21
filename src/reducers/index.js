@@ -20,7 +20,29 @@ const userInfoReducer = (state = {}, action) => {
   }
 };
 
+const notificationDisplayReducer = (state = false, action) => {
+  // Do somethin
+  switch (action.type) {
+    case "SET_NOTIFICATION":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const notificationMessageReducer = (state = "", action) => {
+  // Do somethin
+  switch (action.type) {
+    case "SET_MESSAGE":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   contactReducer,
-  userInfoReducer
+  userInfoReducer,
+  notificationDisplayReducer,
+  notificationMessageReducer
 });

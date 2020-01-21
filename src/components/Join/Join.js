@@ -21,7 +21,10 @@ function SignIn() {
   useEffect(() => {
     if (localStorageData) {
       setRoom(Math.floor(Math.random() * 101));
-      dispatch({ type: "SET_INFO", payload: { name, room } });
+      dispatch({
+        type: "SET_INFO",
+        payload: { name: localStorageData.name, room }
+      });
 
       history.push("/canvas");
     }

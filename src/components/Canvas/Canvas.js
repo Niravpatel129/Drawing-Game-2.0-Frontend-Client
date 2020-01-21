@@ -6,7 +6,7 @@ import CanvasDraw from "react-canvas-draw";
 import Chat from "../Chat/Chat";
 import UserList from "../UserList/UserList";
 import SocketContext from "../../context";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import TimerClock from "../TimerClock/TimerClock";
 import WordBlock from "../WordBlock/WordBlock";
@@ -19,23 +19,39 @@ function Canvas() {
   const { name, room } = useSelector(state => state.contactReducer);
   const history = useHistory();
   const googleUserInfo = localStorageData;
-
   const canvas = useRef();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    socket.emit("join", { name, room, googleUserInfo }, err => {
-      alert(err || "not sure of the error");
-      socket.emit("disconnectUser", googleUserInfo);
+    console.log(googleUserInfo);
+    if (!googleUserInfo) {
       socket.off();
-      history.push("/");
-    });
+      history.push("/login");
+      alert("Login first please!");
+    } else {
+      socket.emit(
+        "join",
+        { name: googleUserInfo.name, room, googleUserInfo },
+        err => {
+          alert(err || "not sure of the error");
+          socket.emit("disconnectUser", googleUserInfo);
+          socket.off();
+          history.push("/");
+        }
+      );
+    }
 
     socket.on("updateData", data => {
       if (canvas.current && data) {
         canvas.current.loadSaveData(data, true);
       }
     });
-  }, [room, name, socket, localStorageData, history, googleUserInfo]);
+
+    socket.on("newJoinNotification", name => {
+      dispatch({ type: "SET_NOTIFICATION", payload: true });
+      dispatch({ type: "SET_MESSAGE", payload: `${name} has joined the room` });
+    });
+  }, [room, name, socket, localStorageData, history, googleUserInfo, dispatch]);
 
   useEffect(() => {
     return () => {

@@ -20,6 +20,10 @@ function Chat() {
     socket.on("updateMessage", res => {
       addMsg(res);
     });
+
+    return () => {
+      socket.off();
+    };
   }, [socket]);
 
   useEffect(() => {

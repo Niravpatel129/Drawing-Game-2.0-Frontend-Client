@@ -17,7 +17,7 @@ function WordBlock() {
   }, [socket, word, room]);
 
   const renderWord = () => {
-    let colorPreset = "transparent";
+    let colorPreset = "";
     return word.split("").map((i, index) => {
       //   index > 1 ? (colorPreset = "black") : (colorPreset = "transparent");
       return (

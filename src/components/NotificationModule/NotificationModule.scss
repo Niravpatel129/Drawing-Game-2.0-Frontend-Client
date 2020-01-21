@@ -1,0 +1,25 @@
+.NotificationModule {
+  position: fixed;
+  left: 50%;
+
+  top: 25%;
+  z-index: 1000;
+  animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+  h1 {
+    transform: translate(-50%, -50%);
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+}
+
+@keyframes slide-top {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}
