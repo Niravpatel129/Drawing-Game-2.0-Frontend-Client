@@ -65,6 +65,7 @@ function Chat() {
         value={input}
         onChange={e => changeInput(e.target.value)}
         onKeyPress={submitMessage}
+        placeholder=" ✏️"
       ></input>
     </div>
   );

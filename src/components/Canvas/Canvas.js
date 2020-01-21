@@ -23,7 +23,6 @@ function Canvas() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(googleUserInfo);
     if (!googleUserInfo) {
       socket.off();
       history.push("/login");

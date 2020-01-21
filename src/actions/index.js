@@ -19,7 +19,7 @@ export const SetNotification = val => {
   };
 };
 
-export const SetNotification = val => {
+export const SetMessage = val => {
   return {
     type: "SET_MESSAGE",
     payload: val
