@@ -11,7 +11,7 @@ function TimerClock() {
   useEffect(() => {
     socket.on("sendTime", res => {
       const time = res.find(i => i.roomId === room);
-      setTime(time.gameData.timer);
+      if (time) setTime(time.gameData.timer);
     });
   }, [socket, room]);
   return (

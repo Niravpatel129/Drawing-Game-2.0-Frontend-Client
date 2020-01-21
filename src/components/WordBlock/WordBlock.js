@@ -9,9 +9,10 @@ function WordBlock() {
   const { room } = useSelector(state => state.contactReducer);
 
   useEffect(() => {
+    console.log(room);
     socket.on("sendTime", res => {
       const time = res.find(i => i.roomId === room);
-      setWord(time.gameData.word);
+      if (time) setWord(time.gameData.word);
     });
   }, [socket, word, room]);
 
