@@ -15,6 +15,10 @@
     padding: 10px;
     color: whitesmoke;
   }
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 @keyframes slide-top {

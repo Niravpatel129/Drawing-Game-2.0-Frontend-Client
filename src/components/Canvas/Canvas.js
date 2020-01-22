@@ -15,14 +15,21 @@ import WordBlock from "../WordBlock/WordBlock";
 
 function Canvas() {
   let { socket } = useContext(SocketContext);
-  const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
   const { name, room } = useSelector(state => state.contactReducer);
+  const canDraw = useSelector(state => state.canDrawReducer);
+
   const history = useHistory();
-  const googleUserInfo = localStorageData;
   const canvas = useRef();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    socket.on("roundEnded", () => {
+      console.log("round ended clear drawing");
+      canvas.current.clear();
+    });
+
+    let googleUserInfo = JSON.parse(localStorage.getItem("loginUserInfo"));
+
     if (!googleUserInfo) {
       socket.off();
       history.push("/login");
@@ -39,7 +46,9 @@ function Canvas() {
         }
       );
     }
+  }, [socket, history, room]);
 
+  useEffect(() => {
     socket.on("updateData", data => {
       if (canvas.current && data) {
         canvas.current.loadSaveData(data, true);
@@ -50,14 +59,17 @@ function Canvas() {
       dispatch({ type: "SET_NOTIFICATION", payload: true });
       dispatch({ type: "SET_MESSAGE", payload: `${name} has joined the room` });
     });
-  }, [room, name, socket, localStorageData, history, googleUserInfo, dispatch]);
+  }, [room, name, socket, history, dispatch]);
 
   useEffect(() => {
     return () => {
       console.log("will unmount");
-      socket.emit("disconnectUser", googleUserInfo);
+      socket.emit(
+        "disconnectUser",
+        JSON.parse(localStorage.getItem("loginUserInfo"))
+      );
     };
-  }, [socket, googleUserInfo]);
+  }, [socket]);
 
   return (
     <section className="Canvas">
@@ -74,12 +86,12 @@ function Canvas() {
         >
           <CanvasDraw
             ref={canvas}
-            disabled={false}
+            disabled={!canDraw}
             brushRadius={6}
             canvasWidth={900}
             canvasHeight={600}
             lazyRadius={0}
-            hideInterface={false}
+            hideInterface={true}
           />
           <UserList />
           <TimerClock />

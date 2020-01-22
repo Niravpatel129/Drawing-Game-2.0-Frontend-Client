@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 function LoadingSpinner() {
   const Loading = useSelector(state => state.SpinnerReducer);
 
-  console.log(Loading);
   return (
     <div
       className="LoadingSpinner"

@@ -14,7 +14,18 @@ function UserList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(localStorageData);
+    if (roomData) {
+      if (roomData.gameData.drawer.user) {
+        if (
+          localStorageData.googleId ===
+          roomData.gameData.drawer.user.googleUserInfo.googleId
+        ) {
+          dispatch({ type: "SET_DRAW", payload: true });
+        } else {
+          dispatch({ type: "SET_DRAW", payload: false });
+        }
+      }
+    }
     if (roomData) {
       if (users.length >= 2 && !roomData.gameData.gameStarted) {
         socket.emit("gameStart", room);
@@ -30,7 +41,7 @@ function UserList() {
         });
       }
     });
-  }, [users, roomData, socket, room, dispatch]);
+  }, [users, roomData, socket, room, dispatch, localStorageData]);
 
   useEffect(() => {
     socket.on("checkUserListAgain", () => {
