@@ -25,3 +25,10 @@ export const SetMessage = val => {
     payload: val
   };
 };
+
+export const setLoadingSpinner = toggleOption => {
+  return {
+    type: "TOGGLE_LOADING_SPINNER",
+    payload: toggleOption
+  };
+};

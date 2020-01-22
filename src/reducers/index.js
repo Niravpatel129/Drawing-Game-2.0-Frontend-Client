@@ -40,9 +40,17 @@ const notificationMessageReducer = (state = "", action) => {
   }
 };
 
+const SpinnerReducer = (currentSpinnerMode = true, action) => {
+  if (action.type === "TOGGLE_LOADING_SPINNER") {
+    return action.payload;
+  }
+  return currentSpinnerMode;
+};
+
 export default combineReducers({
   contactReducer,
   userInfoReducer,
   notificationDisplayReducer,
-  notificationMessageReducer
+  notificationMessageReducer,
+  SpinnerReducer
 });

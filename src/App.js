@@ -11,10 +11,13 @@ import Login from "./components/Login/Login";
 import Logout from "./components/Logout/Logout";
 import NotificationModule from "./components/NotificationModule/NotificationModule";
 
+import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+
 function App() {
   return (
     <SocketProvider>
       <div className="App">
+        <LoadingSpinner />
         <NotificationModule />
         <BrowserRouter>
           <Route path="/" exact>
