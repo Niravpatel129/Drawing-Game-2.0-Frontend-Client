@@ -32,3 +32,10 @@ export const setLoadingSpinner = toggleOption => {
     payload: toggleOption
   };
 };
+
+export const canDrawAction = action => {
+  return {
+    type: "SET_DRAW",
+    payload: action
+  };
+};

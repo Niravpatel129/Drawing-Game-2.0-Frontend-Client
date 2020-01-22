@@ -47,10 +47,18 @@ const SpinnerReducer = (currentSpinnerMode = true, action) => {
   return currentSpinnerMode;
 };
 
+const canDrawReducer = (canDraw = false, action) => {
+  if (action.type === "SET_DRAW") {
+    return action.payload;
+  }
+  return canDraw;
+};
+
 export default combineReducers({
   contactReducer,
   userInfoReducer,
   notificationDisplayReducer,
   notificationMessageReducer,
-  SpinnerReducer
+  SpinnerReducer,
+  canDrawReducer
 });

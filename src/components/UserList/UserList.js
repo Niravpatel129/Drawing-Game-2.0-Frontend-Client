@@ -4,6 +4,7 @@ import SocketContext from "../../context";
 import { useSelector, useDispatch } from "react-redux";
 
 function UserList() {
+  const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
   const [roomData, setRoomData] = useState();
   let { socket } = useContext(SocketContext);
   let [users, updateUsers] = useState([]);
@@ -13,6 +14,7 @@ function UserList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(localStorageData);
     if (roomData) {
       if (users.length >= 2 && !roomData.gameData.gameStarted) {
         socket.emit("gameStart", room);
