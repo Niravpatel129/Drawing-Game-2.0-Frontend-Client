@@ -3,6 +3,7 @@
   top: 10px;
   left: 10px;
   font-weight: bolder;
+  z-index: 999;
 
   .TimerClock {
     margin-left: 10px;
@@ -16,4 +17,9 @@
     background: gray;
     opacity: 0.4;
   }
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

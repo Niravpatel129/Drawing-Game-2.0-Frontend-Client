@@ -7,6 +7,7 @@ function WordBlock() {
   let { socket } = useContext(SocketContext);
   const [word, setWord] = useState("");
   const { room } = useSelector(state => state.contactReducer);
+  const canDraw = useSelector(state => state.canDrawReducer);
 
   useEffect(() => {
     socket.on("sendTime", res => {
@@ -16,7 +17,12 @@ function WordBlock() {
   }, [socket, word, room]);
 
   const renderWord = () => {
-    let colorPreset = "transparent";
+    let colorPreset;
+    if (canDraw) {
+      colorPreset = "black";
+    } else {
+      colorPreset = "transparent";
+    }
     return word.split("").map((i, index) => {
       //   index > 1 ? (colorPreset = "black") : (colorPreset = "transparent");
       return (
