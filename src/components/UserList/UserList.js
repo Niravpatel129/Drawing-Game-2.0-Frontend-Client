@@ -15,9 +15,7 @@ function UserList() {
   useEffect(() => {
     if (roomData) {
       if (users.length >= 2 && !roomData.gameData.gameStarted) {
-        setTimeout(() => {
-          socket.emit("gameStart", room);
-        }, 2000);
+        socket.emit("gameStart", room);
       }
     }
 
