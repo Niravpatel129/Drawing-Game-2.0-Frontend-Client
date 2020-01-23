@@ -11,6 +11,7 @@ import { useHistory } from "react-router";
 import TimerClock from "../TimerClock/TimerClock";
 import WordBlock from "../WordBlock/WordBlock";
 import RoomNumber from "../RoomNumber/RoomNumber";
+import ToolBar from "../ToolBar/ToolBar";
 
 // let socket;
 
@@ -18,6 +19,7 @@ function Canvas() {
   let { socket } = useContext(SocketContext);
   const { name, room } = useSelector(state => state.contactReducer);
   const canDraw = useSelector(state => state.canDrawReducer);
+  const brushColor = useSelector(state => state.ColorReducer);
 
   const history = useHistory();
   const canvas = useRef();
@@ -25,7 +27,6 @@ function Canvas() {
 
   useEffect(() => {
     socket.on("roundEnded", () => {
-      console.log("round ended clear drawing");
       canvas.current.clear();
     });
 
@@ -72,28 +73,29 @@ function Canvas() {
     };
   }, [socket]);
 
+  const handleMouseDown = () => {
+    socket.emit("drawingData", {
+      data: canvas.current.getSaveData(),
+      room
+    });
+  };
+
   return (
     <section className="Canvas">
       <div className="Container">
         <Chat socket={socket} />
-        <div
-          className="CanvasContainer"
-          onMouseUp={() => {
-            socket.emit("drawingData", {
-              data: canvas.current.getSaveData(),
-              room
-            });
-          }}
-        >
+        <div className="CanvasContainer" onMouseUp={handleMouseDown}>
           <CanvasDraw
             ref={canvas}
             disabled={!canDraw}
             brushRadius={6}
+            brushColor={brushColor}
             canvasWidth={900}
             canvasHeight={600}
             lazyRadius={0}
             hideInterface={true}
           />
+          <ToolBar canvasRef={canvas} handleMouseDown={handleMouseDown} />
           <UserList />
           <TimerClock />
           <WordBlock />

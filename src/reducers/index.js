@@ -54,11 +54,19 @@ const canDrawReducer = (canDraw = false, action) => {
   return canDraw;
 };
 
+const ColorReducer = (color = "#444", action) => {
+  if (action.type === "SET_COLOR") {
+    return action.payload;
+  }
+  return color;
+};
+
 export default combineReducers({
   contactReducer,
   userInfoReducer,
   notificationDisplayReducer,
   notificationMessageReducer,
   SpinnerReducer,
-  canDrawReducer
+  canDrawReducer,
+  ColorReducer
 });

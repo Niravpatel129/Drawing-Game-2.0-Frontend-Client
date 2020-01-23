@@ -39,3 +39,10 @@ export const canDrawAction = action => {
     payload: action
   };
 };
+
+export const setColorAction = action => {
+  return {
+    type: "SET_COLOR",
+    payload: action
+  };
+};

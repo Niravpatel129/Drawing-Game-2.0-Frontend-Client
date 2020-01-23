@@ -14,7 +14,7 @@ function RoomList() {
 
   const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
 
-  let [title, changeTitle] = useState("No Rooms");
+  let [title, changeTitle] = useState("No Active Rooms Found");
   useEffect(() => {
     socket.emit("getAllRooms");
   }, [socket]);
