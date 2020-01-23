@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import TimerClock from "../TimerClock/TimerClock";
 import WordBlock from "../WordBlock/WordBlock";
+import RoomNumber from "../RoomNumber/RoomNumber";
 
 // let socket;
 
@@ -96,6 +97,7 @@ function Canvas() {
           <UserList />
           <TimerClock />
           <WordBlock />
+          <RoomNumber />
         </div>
       </div>
     </section>

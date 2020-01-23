@@ -75,30 +75,23 @@ function UserList() {
   const renderUser = () => {
     if (users) {
       return users.map((i, index) => {
-        if (
+        const drawing =
           i.user.googleUserInfo.googleId === drawerId &&
-          roomData.gameData.gameStarted
-        ) {
-          return (
-            <div className="user-card" key={index}>
-              <h3>
-                {i.user.googleUserInfo.name}
+          roomData.gameData.gameStarted;
+        return (
+          <div className="user-card" key={index}>
+            <h3>
+              {i.user.googleUserInfo.name}
+              {drawing && (
                 <span role="img" aria-label="pencil">
                   {" "}
                   ✏️
                 </span>
-              </h3>
-              <p>{i.points} Points</p>
-            </div>
-          );
-        } else {
-          return (
-            <div className="user-card" key={index}>
-              <h3>{i.user.googleUserInfo.name}</h3>
-              <p>{i.points} Points</p>
-            </div>
-          );
-        }
+              )}
+            </h3>
+            <p>{i.points} Points</p>
+          </div>
+        );
       });
     }
   };

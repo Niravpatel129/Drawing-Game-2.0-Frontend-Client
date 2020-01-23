@@ -9,7 +9,12 @@ function RoomList() {
   const dispatch = useDispatch();
 
   let { socket } = useContext(SocketContext);
+
   let [rooms, updateRoomList] = useState([]);
+  const [room, setRoom] = useState(12);
+
+  const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
+
   let [title, changeTitle] = useState("No Rooms");
   useEffect(() => {
     socket.emit("getAllRooms");
@@ -26,7 +31,6 @@ function RoomList() {
   }, [socket, rooms]);
 
   const redirect = room => {
-    const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
     if (localStorageData) {
       dispatch({
         type: "SET_INFO",
@@ -39,7 +43,17 @@ function RoomList() {
   };
 
   const newRoom = () => {
-    history.push("/join");
+    if (localStorageData) {
+      setRoom(Math.floor(Math.random() * 101));
+
+      dispatch({
+        type: "SET_INFO",
+        payload: { name: localStorageData.name, room }
+      });
+      history.push("/canvas");
+    } else {
+      history.push("/login");
+    }
   };
 
   const renderRooms = () => {

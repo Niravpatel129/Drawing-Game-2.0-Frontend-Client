@@ -12,7 +12,7 @@ function Login() {
   const responseGoogle = response => {
     localStorage.setItem("loginUserInfo", JSON.stringify(response.profileObj));
     dispatch({ type: "LOGIN_USER", payload: response.profileObj });
-    history.push("/join");
+    history.push("/roomlist");
   };
 
   const failed = res => {
