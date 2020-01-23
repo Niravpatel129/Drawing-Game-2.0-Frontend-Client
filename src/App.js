@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 import { BrowserRouter, Route } from "react-router-dom";
-import Landing from "./components/Landing/Landing";
+// import Landing from "./components/Landing/Landing";
 import Canvas from "./components/Canvas/Canvas";
 import Join from "./components/Join/Join";
 import SocketProvider from "./provider";
@@ -21,7 +21,7 @@ function App() {
         <NotificationModule />
         <BrowserRouter>
           <Route path="/" exact>
-            <Landing />
+            <RoomList />
           </Route>
           <Route path="/join" exact>
             <Join />
