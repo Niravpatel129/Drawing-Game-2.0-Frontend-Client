@@ -11,7 +11,6 @@ function RoomList() {
   let { socket } = useContext(SocketContext);
 
   let [rooms, updateRoomList] = useState([]);
-  const [room, setRoom] = useState(12);
 
   const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
 
@@ -44,11 +43,12 @@ function RoomList() {
 
   const newRoom = () => {
     if (localStorageData) {
-      setRoom(Math.floor(Math.random() * 101));
-
       dispatch({
         type: "SET_INFO",
-        payload: { name: localStorageData.name, room }
+        payload: {
+          name: localStorageData.name,
+          room: Math.floor(Math.random() * 500)
+        }
       });
       history.push("/canvas");
     } else {
