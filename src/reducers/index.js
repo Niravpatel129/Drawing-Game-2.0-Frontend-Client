@@ -61,6 +61,13 @@ const ColorReducer = (color = "#444", action) => {
   return color;
 };
 
+const brushWidthReducer = (state = 6, action) => {
+  if (action.type === "SET_WIDTH") {
+    return action.payload;
+  }
+  return state;
+};
+
 const gussedCorrectReducer = (color = false, action) => {
   if (action.type === "SET_GUESS") {
     return action.payload;
@@ -76,5 +83,6 @@ export default combineReducers({
   SpinnerReducer,
   canDrawReducer,
   ColorReducer,
-  gussedCorrectReducer
+  gussedCorrectReducer,
+  brushWidthReducer
 });

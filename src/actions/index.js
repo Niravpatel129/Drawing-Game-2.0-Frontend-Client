@@ -53,3 +53,10 @@ export const setGuess = action => {
     payload: action
   };
 };
+
+export const setWidth = action => {
+  return {
+    type: "SET_WIDTH",
+    payload: action
+  };
+};
