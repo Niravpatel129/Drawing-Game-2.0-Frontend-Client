@@ -26,7 +26,16 @@ function Canvas() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    setTimeout(() => {
+      canvas.current.clear();
+    }, 600);
+  }, [canDraw]);
+
+  useEffect(() => {
     socket.on("roundEnded", () => {
+      dispatch({ type: "SET_DRAW", payload: false });
+      dispatch({ type: "SET_GUESS", payload: false });
+
       canvas.current.clear();
     });
 
@@ -48,7 +57,7 @@ function Canvas() {
         }
       );
     }
-  }, [socket, history, room]);
+  }, [socket, history, room, dispatch]);
 
   useEffect(() => {
     socket.on("updateData", data => {

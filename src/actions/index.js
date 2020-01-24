@@ -46,3 +46,10 @@ export const setColorAction = action => {
     payload: action
   };
 };
+
+export const setGuess = action => {
+  return {
+    type: "SET_GUESS",
+    payload: action
+  };
+};

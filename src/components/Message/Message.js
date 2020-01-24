@@ -1,12 +1,14 @@
 import React from "react";
 import "./Message.scss";
 
-import Emoji from "react-emoji-render";
+import { EmojioneV4 } from "react-emoji-render";
 
-function Message({ name, message, src }) {
+function Message({ name, message, src, style }) {
+  const adminStyle = {};
+
   return (
     <>
-      <div className="MessageContainer">
+      <div className="MessageContainer" style={style}>
         <img
           src={
             src ||
@@ -15,9 +17,10 @@ function Message({ name, message, src }) {
           alt="https://www.w3schools.com/w3images/bandmember.jpg"
         ></img>
         <div className="Message">
-          <h4>{name || "Guest"}</h4>
-          <p>
-            <Emoji
+          <h4>{name || "ADMIN"}</h4>
+          <p style={adminStyle}>
+            <EmojioneV4
+              size={64}
               text={message || "You need to enable JavaScript to run this app."}
             />
           </p>

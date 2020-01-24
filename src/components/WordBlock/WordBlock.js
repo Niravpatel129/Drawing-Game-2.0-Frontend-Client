@@ -8,6 +8,7 @@ function WordBlock() {
   const [word, setWord] = useState("");
   const { room } = useSelector(state => state.contactReducer);
   const canDraw = useSelector(state => state.canDrawReducer);
+  const guessedCorrect = useSelector(state => state.gussedCorrectReducer);
 
   useEffect(() => {
     socket.on("sendTime", res => {
@@ -18,7 +19,7 @@ function WordBlock() {
 
   const renderWord = () => {
     let colorPreset;
-    if (canDraw) {
+    if (guessedCorrect || canDraw) {
       colorPreset = "black";
     } else {
       colorPreset = "transparent";

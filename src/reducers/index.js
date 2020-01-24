@@ -61,6 +61,13 @@ const ColorReducer = (color = "#444", action) => {
   return color;
 };
 
+const gussedCorrectReducer = (color = false, action) => {
+  if (action.type === "SET_GUESS") {
+    return action.payload;
+  }
+  return color;
+};
+
 export default combineReducers({
   contactReducer,
   userInfoReducer,
@@ -68,5 +75,6 @@ export default combineReducers({
   notificationMessageReducer,
   SpinnerReducer,
   canDrawReducer,
-  ColorReducer
+  ColorReducer,
+  gussedCorrectReducer
 });

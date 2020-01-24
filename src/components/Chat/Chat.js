@@ -41,10 +41,11 @@ function Chat() {
   const submitMessage = e => {
     if (e.charCode === 13) {
       if (input) {
-        if (input.toUpperCase() === drawWord.toUpperCase()) {
+        if (input.toUpperCase().includes(drawWord.toUpperCase())) {
           socket.emit("guessedCorrect", { user: localStorageData, room });
           dispatch({ type: "SET_NOTIFICATION", payload: true });
           dispatch({ type: "SET_MESSAGE", payload: `You gussed the word! ` });
+          dispatch({ type: "SET_GUESS", payload: true });
 
           socket.emit("chatMessage", {
             name: localStorageData,
@@ -60,13 +61,23 @@ function Chat() {
   };
 
   const renderMessage = () => {
+    let style;
     if (msg)
       return msg.map((e, index) => {
+        if (e.message === ":star::star::star:CORRECT:star::star::star:") {
+          style = { backgroundColor: "#84BAEE" };
+        } else if (!e.name.name) {
+          style = { backgroundColor: "#EDA1A1", fontWeight: 900 };
+        } else {
+          style = {};
+        }
+
         return (
           <Message
             src={e.name.imageUrl}
             name={e.name.name}
             message={e.message}
+            style={style}
             key={index}
           />
         );
