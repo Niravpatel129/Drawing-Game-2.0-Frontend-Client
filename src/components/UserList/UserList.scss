@@ -1,24 +1,28 @@
 .UserList {
-  border: 1px solid black;
+  border: 1px solid whitesmoke;
   width: 200px;
   background-color: white;
   position: absolute;
   top: 1px;
   right: -81px;
   z-index: 21;
+
+  margin: 13px 0;
   h4 {
     margin: 0;
     text-transform: uppercase;
     text-align: center;
-    background-color: grey;
-    padding: 4.5px;
+    background-image: url("https://digitalsynopsis.com/wp-content/uploads/2017/02/beautiful-color-gradients-backgrounds-028-plum-plate.png");
+    background-size: cover; /* <------ */
+    background-repeat: no-repeat;
+    padding: 5.5px;
   }
   .user-card {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     padding: 7px;
-    background-color: gainsboro;
+    background-color: #f2f2f2;
     color: black;
 
     h3,

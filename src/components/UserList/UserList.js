@@ -76,7 +76,11 @@ function UserList() {
 
   const renderUser = () => {
     if (users) {
-      return users.map((i, index) => {
+      const sortedUsers = users.sort((a, b) => {
+        return b.points - a.points;
+      });
+
+      return sortedUsers.map((i, index) => {
         const drawing =
           i.user.googleUserInfo.googleId === drawerId &&
           roomData.gameData.gameStarted;
