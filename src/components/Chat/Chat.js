@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import "./Chat.scss";
-import Message from "../Message/Message";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import SocketContext from "../../context";
+import Message from "../Message/Message";
+import "./Chat.scss";
 
 function Chat() {
   let { socket } = useContext(SocketContext);

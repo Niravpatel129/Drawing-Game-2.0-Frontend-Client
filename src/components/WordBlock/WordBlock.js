@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
-import "./WordBlock.scss";
-import SocketContext from "../../context";
+import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import SocketContext from "../../context";
+import "./WordBlock.scss";
 
 function WordBlock() {
   let { socket } = useContext(SocketContext);

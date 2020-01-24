@@ -1,17 +1,15 @@
-import React, { useRef, useEffect, useContext } from "react";
-
-import "./Canvas.scss";
+import React, { useContext, useEffect, useRef } from "react";
 import CanvasDraw from "react-canvas-draw";
-
-import Chat from "../Chat/Chat";
-import UserList from "../UserList/UserList";
-import SocketContext from "../../context";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import TimerClock from "../TimerClock/TimerClock";
-import WordBlock from "../WordBlock/WordBlock";
+import SocketContext from "../../context";
+import Chat from "../Chat/Chat";
 import RoomNumber from "../RoomNumber/RoomNumber";
+import TimerClock from "../TimerClock/TimerClock";
 import ToolBar from "../ToolBar/ToolBar";
+import UserList from "../UserList/UserList";
+import WordBlock from "../WordBlock/WordBlock";
+import "./Canvas.scss";
 
 // let socket;
 
@@ -28,7 +26,9 @@ function Canvas() {
 
   useEffect(() => {
     setTimeout(() => {
-      canvas.current.clear();
+      if (canvas) {
+        canvas.current.clear();
+      }
     }, 600);
   }, [canDraw]);
 
@@ -37,7 +37,9 @@ function Canvas() {
       dispatch({ type: "SET_GUESS", payload: false });
       dispatch({ type: "SET_DRAW", payload: false });
 
-      canvas.current.clear();
+      if (canvas) {
+        canvas.current.clear();
+      }
     });
 
     let googleUserInfo = JSON.parse(localStorage.getItem("loginUserInfo"));

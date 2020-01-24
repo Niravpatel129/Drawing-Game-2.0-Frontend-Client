@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import "./Join.scss";
 import { useHistory } from "react-router";
+import "./Join.scss";
 
 function SignIn() {
   const history = useHistory();
