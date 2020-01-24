@@ -14,7 +14,7 @@ function UserList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (roomData) {
+    if (roomData && roomData.gameData.drawer) {
       if (roomData.gameData.drawer.user) {
         if (
           localStorageData.googleId ===
@@ -55,9 +55,11 @@ function UserList() {
     socket.on("sendTime", res => {
       const draw = res.find(i => i.roomId === room);
       setRoomData(draw);
-      if (draw && draw.gameData.drawer.user) {
-        updateDrawerName(draw.gameData.drawer.user.googleUserInfo.name);
-        updateDrawer(draw.gameData.drawer.user.googleUserInfo.googleId);
+      if (draw.gameData.drawer) {
+        if (draw && draw.gameData.drawer.user) {
+          updateDrawerName(draw.gameData.drawer.user.googleUserInfo.name);
+          updateDrawer(draw.gameData.drawer.user.googleUserInfo.googleId);
+        }
       }
     });
   }, [socket, room]);
