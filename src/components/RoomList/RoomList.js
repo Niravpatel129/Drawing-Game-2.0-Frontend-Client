@@ -4,6 +4,8 @@ import SocketContext from "../../context";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 
+import Swal from "sweetalert2";
+
 function RoomList() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -72,6 +74,24 @@ function RoomList() {
     }
   };
 
+  const changeNick = () => {
+    let currentInfo = JSON.parse(localStorage.getItem("loginUserInfo"));
+    if (!currentInfo) {
+      Swal.fire("wait!", "Login first before setting name!", "warning");
+      history.push("/login");
+    } else {
+      Swal.fire({
+        title: "New Nickname",
+        input: "text"
+      }).then(res => {
+        if (res.value) {
+          currentInfo.name = res.value;
+          localStorage.setItem("loginUserInfo", JSON.stringify(currentInfo));
+        }
+      });
+    }
+  };
+
   return (
     <div className="RoomList">
       <div className="Container">
@@ -80,6 +100,9 @@ function RoomList() {
       </div>
       <div onClick={newRoom} className="myButton">
         New Room
+      </div>
+      <div onClick={changeNick} className="myButton2">
+        ChangeNick
       </div>
     </div>
   );
