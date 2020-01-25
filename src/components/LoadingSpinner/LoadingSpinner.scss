@@ -8,6 +8,7 @@
   align-items: center;
   position: absolute;
   top: 0;
+  z-index: 1000;
 
   .lds-ring {
     display: inline-block;
