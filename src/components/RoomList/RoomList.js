@@ -95,8 +95,10 @@ function RoomList() {
   return (
     <div className="RoomList">
       <div className="Container">
-        <h1>{title}</h1>
-        {renderRooms()}
+        <div className="child">
+          <h1>{title}</h1>
+          {renderRooms()}
+        </div>
       </div>
       <div onClick={newRoom} className="myButton">
         New Room

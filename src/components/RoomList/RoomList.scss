@@ -1,13 +1,12 @@
 .RoomList {
-  overflow: hidden;
+  overflow-y: hidden;
   background-repeat: no-repeat;
   background-size: cover;
   color: #424242;
   text-shadow: 2px 2px #222222;
   position: relative;
-
   height: 100vh;
-  overflow-y: scroll;
+
   h1 {
     color: #ffffff;
     text-shadow: 2px 2px black;
@@ -17,11 +16,7 @@
   .Container {
     margin: 0;
     height: 600px;
-
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
   }
   .list-item {
     background-image: url("https://digitalsynopsis.com/wp-content/uploads/2017/02/beautiful-color-gradients-backgrounds-028-plum-plate.png");
