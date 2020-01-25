@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./StatusMessage.scss";
 import SocketContext from "../../context";
 import { useSelector, useDispatch } from "react-redux";
@@ -23,6 +23,14 @@ function StatusMessage() {
     dispatch({ type: "SET_DRAW", payload: false });
     setGameStarted(false);
   });
+
+  useEffect(() => {
+    if (!gameStarted) {
+      setStatus("Game Not Started");
+    } else {
+      setStatus("Game In Progress");
+    }
+  }, [drawer, gameStarted]);
 
   return <div className="StatusMessage">{status}</div>;
 }

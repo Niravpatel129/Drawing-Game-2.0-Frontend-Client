@@ -104,7 +104,7 @@ function UserList() {
 
   return (
     <div className="UserList">
-      <h4>Players</h4>
+      <h4>Room Users:</h4>
       {renderUser()}
     </div>
   );
