@@ -75,6 +75,14 @@ const gussedCorrectReducer = (color = false, action) => {
   return color;
 };
 
+const gameInProgressReducer = (state = false, action) => {
+  if (action.type === "SET_STATUS") {
+    return action.payload;
+  }
+
+  return state;
+};
+
 export default combineReducers({
   contactReducer,
   userInfoReducer,
@@ -84,5 +92,6 @@ export default combineReducers({
   canDrawReducer,
   ColorReducer,
   gussedCorrectReducer,
-  brushWidthReducer
+  brushWidthReducer,
+  gameInProgressReducer
 });

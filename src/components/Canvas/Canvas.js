@@ -10,6 +10,7 @@ import ToolBar from "../ToolBar/ToolBar";
 import UserList from "../UserList/UserList";
 import WordBlock from "../WordBlock/WordBlock";
 import "./Canvas.scss";
+import StatusMessage from "../StatusMessage/StatusMessage";
 
 // let socket;
 
@@ -112,6 +113,7 @@ function Canvas() {
           <TimerClock />
           <WordBlock />
           <RoomNumber />
+          <StatusMessage />
         </div>
       </div>
     </section>
