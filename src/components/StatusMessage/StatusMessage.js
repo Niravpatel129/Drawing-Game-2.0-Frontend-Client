@@ -12,13 +12,11 @@ function StatusMessage() {
 
   // sockets
   socket.on("gameStart", () => {
-    console.log("game started");
     setStatus("Game In Progress");
     setGameStarted(true);
   });
 
   socket.on("gameEnded", () => {
-    console.log("game ended");
     setStatus("Game Not Started");
     dispatch({ type: "SET_DRAW", payload: false });
     setGameStarted(false);

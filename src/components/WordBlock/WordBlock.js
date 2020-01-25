@@ -9,6 +9,13 @@ function WordBlock() {
   const { room } = useSelector(state => state.contactReducer);
   const canDraw = useSelector(state => state.canDrawReducer);
   const guessedCorrect = useSelector(state => state.gussedCorrectReducer);
+  const clock = useSelector(state => state.timeReducer);
+
+  useEffect(() => {
+    if (clock) {
+      // console.log(clock);
+    }
+  }, [clock]);
 
   useEffect(() => {
     socket.on("sendTime", res => {
@@ -24,8 +31,36 @@ function WordBlock() {
     } else {
       colorPreset = "transparent";
     }
+
+    let showingWordIndex = [];
+    if (clock < 60) {
+      showingWordIndex.push(Math.floor(word.length / 4));
+    }
+    if (clock < 50) {
+      showingWordIndex.push(Math.floor(word.length - 3));
+    }
+    if (clock < 40) {
+      showingWordIndex.push(Math.floor(word.length - 2));
+    }
+    if (clock < 20) {
+      showingWordIndex.push(Math.floor(word.length - 1));
+    }
+    if (clock < 10) {
+      showingWordIndex.push(Math.floor(word.length));
+    }
+
     return word.split("").map((i, index) => {
-      //   index > 1 ? (colorPreset = "black") : (colorPreset = "transparent");
+      if (!canDraw) {
+        if (showingWordIndex.indexOf(index) !== -1) {
+          colorPreset = "Black";
+        } else {
+          colorPreset = "Transparent";
+        }
+      }
+      // index === 1 || index === 2
+      //   ? (colorPreset = "black")
+      //   : (colorPreset = "transparent");
+
       return (
         <span style={{ color: colorPreset }} key={index}>
           <p style={{ color: colorPreset }}>{i}</p>

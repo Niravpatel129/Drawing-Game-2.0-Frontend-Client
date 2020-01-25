@@ -83,6 +83,14 @@ const gameInProgressReducer = (state = false, action) => {
   return state;
 };
 
+const timeReducer = (state = 0, action) => {
+  if (action.type === "SET_TIME") {
+    return action.payload;
+  }
+
+  return state;
+};
+
 export default combineReducers({
   contactReducer,
   userInfoReducer,
@@ -93,5 +101,6 @@ export default combineReducers({
   ColorReducer,
   gussedCorrectReducer,
   brushWidthReducer,
-  gameInProgressReducer
+  gameInProgressReducer,
+  timeReducer
 });
