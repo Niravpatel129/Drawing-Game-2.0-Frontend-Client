@@ -26,7 +26,7 @@ function Canvas() {
 
   useEffect(() => {
     setTimeout(() => {
-      if (canvas) {
+      if (canvas.current) {
         canvas.current.clear();
       }
     }, 600);
@@ -37,7 +37,7 @@ function Canvas() {
       dispatch({ type: "SET_GUESS", payload: false });
       dispatch({ type: "SET_DRAW", payload: false });
 
-      if (canvas) {
+      if (canvas.current) {
         canvas.current.clear();
       }
     });
