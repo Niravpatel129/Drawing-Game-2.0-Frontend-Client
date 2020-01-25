@@ -1,32 +1,38 @@
 .RoomList {
-  background-color: #424242;
-  // background-image: url("https://digitalsynopsis.com/wp-content/uploads/2017/02/beautiful-color-gradients-backgrounds-100-vicious-stance.png");
   background-repeat: no-repeat;
   background-size: cover;
   color: #424242;
+  text-shadow: 2px 2px #222222;
   position: relative;
 
   height: 100vh;
+  overflow: scroll;
   h1 {
     color: #ffffff;
+    text-shadow: 2px 2px black;
   }
 
   padding-top: 5%;
   .Container {
     margin: 0;
+    height: 600px;
 
+    overflow: scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .list-item {
-    background-color: #d6d665;
+    background-image: url("https://digitalsynopsis.com/wp-content/uploads/2017/02/beautiful-color-gradients-backgrounds-028-plum-plate.png");
+    background-size: cover; /* <------ */
+    background-repeat: no-repeat;
+    color: #ffffff;
     display: flex;
     border: 1px solid black;
     width: 40%;
     height: 10%;
     justify-content: space-evenly;
-    margin-bottom: 10px;
+    margin-bottom: 17px;
 
     h3 {
       width: 50%;
@@ -34,20 +40,24 @@
 
     button {
       align-self: center;
-      height: 50%;
-      width: 20%;
+      height: 21px;
+      font-size: 14px;
+
+      width: 12%;
+      background-color: whitesmoke;
+      border-radius: 10px;
     }
   }
 
   .myButton {
     position: absolute;
-    bottom: 5%;
+    bottom: 10%;
     right: 5%;
+    text-shadow: none;
 
-    background: linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
+    background: black;
     background-color: #63b8ee;
-    border-radius: 6px;
-    border: 1px solid #3866a3;
+    border-radius: 2px;
     cursor: pointer;
     color: #14396a;
     font-size: 15px;
@@ -62,13 +72,12 @@
 
   .myButton2 {
     position: absolute;
-    bottom: 5%;
+    bottom: 10%;
     left: 5%;
-
-    background: linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
+    text-shadow: none;
+    background: black;
     background-color: #63b8ee;
     border-radius: 6px;
-    border: 1px solid #3866a3;
     cursor: pointer;
     color: #14396a;
     font-size: 15px;
@@ -77,7 +86,22 @@
     text-decoration: none;
     transition: all 0.2s ease-in-out;
   }
+
   .myButton2:hover {
     transform: scale(1.2);
   }
+}
+
+.RoomList::after {
+  content: "";
+  background-image: url(https://i.pinimg.com/originals/b4/bf/af/b4bfafa2dccc4cf3fe24f774b3f13b12.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
