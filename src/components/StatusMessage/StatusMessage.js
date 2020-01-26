@@ -1,7 +1,7 @@
-import React, { useState, useContext, useEffect } from "react";
-import "./StatusMessage.scss";
+import React, { useContext, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import SocketContext from "../../context";
-import { useSelector, useDispatch } from "react-redux";
+import "./StatusMessage.scss";
 
 function StatusMessage() {
   let { socket } = useContext(SocketContext);
