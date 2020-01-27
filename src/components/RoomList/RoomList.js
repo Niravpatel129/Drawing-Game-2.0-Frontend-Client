@@ -9,14 +9,15 @@ import Swal from "sweetalert2";
 function RoomList() {
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const [localStorageData, setlocalStorageData] = useState(
+    JSON.parse(localStorage.getItem("loginUserInfo"))
+  );
   let { socket } = useContext(SocketContext);
 
   let [rooms, updateRoomList] = useState([]);
 
-  const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
-
   let [title, changeTitle] = useState("No Active Rooms Found");
+
   useEffect(() => {
     socket.emit("getAllRooms");
   }, [socket]);
@@ -87,9 +88,38 @@ function RoomList() {
         if (res.value) {
           currentInfo.name = res.value;
           localStorage.setItem("loginUserInfo", JSON.stringify(currentInfo));
+          setlocalStorageData(
+            JSON.parse(localStorage.getItem("loginUserInfo"))
+          );
         }
       });
     }
+  };
+
+  const loginAsGuest = () => {
+    console.log("login as guest");
+    let nickname = "Guest";
+    Swal.fire({
+      title: "set Nickname",
+      input: "text"
+    }).then(res => {
+      if (res.value) {
+        nickname = res.value;
+      }
+    });
+
+    let guestUser = {
+      googleId: Math.floor(Math.random() * 1000000000000000000000),
+      imageUrl: "https://loremflickr.com/50/50",
+      email: "guest@gmail.com",
+      name: nickname || "Guest",
+      givenName: "guest",
+      familyName: "guest",
+      guest: true
+    };
+
+    localStorage.setItem("loginUserInfo", JSON.stringify(guestUser));
+    setlocalStorageData(JSON.parse(localStorage.getItem("loginUserInfo")));
   };
 
   return (
@@ -105,6 +135,9 @@ function RoomList() {
       </div>
       <div onClick={changeNick} className="myButton2">
         ChangeNick
+      </div>
+      <div onClick={loginAsGuest} className="myButton3">
+        Login as Guest
       </div>
     </div>
   );

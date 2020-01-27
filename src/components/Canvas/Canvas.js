@@ -3,7 +3,6 @@ import CanvasDraw from "react-canvas-draw";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import SocketContext from "../../context";
-import Chat from "../Chat/Chat";
 import RoomNumber from "../RoomNumber/RoomNumber";
 import TimerClock from "../TimerClock/TimerClock";
 import ToolBar from "../ToolBar/ToolBar";
@@ -11,6 +10,7 @@ import UserList from "../UserList/UserList";
 import WordBlock from "../WordBlock/WordBlock";
 import "./Canvas.scss";
 import StatusMessage from "../StatusMessage/StatusMessage";
+import UpdatedChat from "../UpdatedChat/UpdatedChat";
 
 // let socket;
 
@@ -96,25 +96,29 @@ function Canvas() {
   return (
     <section className="Canvas">
       <div className="Container">
-        <Chat socket={socket} />
+        <UserList />
+
         <div className="CanvasContainer" onMouseUp={handleMouseDown}>
           <CanvasDraw
+            style={{ background: "none" }}
             ref={canvas}
             disabled={!canDraw}
             brushRadius={brushWidth}
             brushColor={brushColor}
-            canvasWidth={900}
+            canvasWidth={800}
             canvasHeight={600}
             lazyRadius={0}
             hideInterface={true}
+            hideGrid={true}
           />
+
           <ToolBar canvasRef={canvas} handleMouseDown={handleMouseDown} />
-          <UserList />
           <TimerClock />
           <WordBlock />
           <RoomNumber />
           <StatusMessage />
         </div>
+        <UpdatedChat />
       </div>
     </section>
   );

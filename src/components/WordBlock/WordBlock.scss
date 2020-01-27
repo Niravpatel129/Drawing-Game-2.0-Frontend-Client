@@ -1,6 +1,6 @@
 .WordBlock {
   position: absolute;
-  top: 5%; /* position the top  edge of the element at the middle of the parent */
+  top: 8%; /* position the top  edge of the element at the middle of the parent */
   left: 50%; /* position the left edge of the element at the middle of the parent */
   z-index: 999;
 
@@ -12,9 +12,9 @@
     p {
       text-align: center;
       display: inline-block;
-      margin: 7px;
-      border-bottom: 1px solid black;
-      width: 18px;
+      margin: 4px;
+      border-bottom: 5px solid black;
+      width: 25px;
     }
   }
   -moz-user-select: none;

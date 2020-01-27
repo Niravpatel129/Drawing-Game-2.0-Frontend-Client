@@ -50,7 +50,7 @@ function Chat() {
           socket.emit("chatMessage", {
             name: localStorageData,
             room,
-            input: ":star::star::star:CORRECT:star::star::star:"
+            input: ":star:CORRECT:star:"
           });
         } else {
           socket.emit("chatMessage", { name: localStorageData, room, input });
@@ -85,7 +85,7 @@ function Chat() {
   };
 
   const Chat = () => {
-    let placeholder = " ✏️";
+    let placeholder = "Type here";
     if (canDraw) {
       placeholder = "You are drawing!";
     }

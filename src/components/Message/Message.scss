@@ -1,37 +1,38 @@
 .MessageContainer {
   display: flex;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 13px;
-  border-top: 1px solid #eaeaea;
-  // border-bottom: 1px solid black;
+  color: white;
+  padding: 20px;
+  align-items: center;
+  flex-shrink: 0;
+  height: 55px;
+  margin-top: 26px;
 
-  img {
-    width: 14%;
-    height: 10%;
-    border-radius: 40px;
-  }
-  .Message {
+  .imageContainer {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
     display: flex;
-    align-content: center;
-    flex-wrap: wrap;
-    width: 70%;
-    padding-left: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    width: 50px;
+    height: 50px;
+  }
 
-    h4 {
-      font-size: 14px;
-      width: 100%;
-      padding: 0;
-      margin: 0;
-    }
+  .Message {
+    margin-left: 10px;
+    background-color: #666d8c;
+    border-radius: 10px;
+    padding: 10px;
+
     p {
       padding: 0;
-      font-size: 12.4px;
+      font-size: 16px;
       margin: 0;
+      max-width: 175px;
+      word-wrap: break-word;
     }
   }
-}
-
-.MessageContainer:nth-child(odd) {
-  background-color: #e6e6e6;
 }
