@@ -11,6 +11,17 @@
   padding-top: 60px;
   align-items: center;
 
+  img {
+    width: 55px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  img:hover {
+    transform: scale(
+      1.2
+    ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    cursor: pointer;
+  }
   h2 {
     font-size: 17px;
     padding-bottom: 10px;

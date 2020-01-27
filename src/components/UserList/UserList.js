@@ -98,6 +98,9 @@ function UserList() {
       });
     }
   };
+  const settings = () => {
+    console.log("clicked settings");
+  };
 
   return (
     <div className="UserList">
@@ -107,6 +110,11 @@ function UserList() {
           {renderUser()}
         </div>
       </div>
+      <img
+        onClick={settings}
+        alt="settings"
+        src="https://i.imgur.com/op3hLAL.png"
+      ></img>
     </div>
   );
 }
