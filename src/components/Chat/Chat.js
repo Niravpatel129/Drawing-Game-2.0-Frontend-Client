@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import SocketContext from "../../context";
 import Message from "../Message/Message";
 import "./Chat.scss";
+const poof = new Audio(
+  "https://raw.githubusercontent.com/Niravpatel129/World-Shooter-game-browser-multiplayer-online-/master/public/assets/poof.mp3"
+);
 
 function Chat() {
   let { socket } = useContext(SocketContext);
@@ -41,6 +44,7 @@ function Chat() {
   const submitMessage = e => {
     if (e.charCode === 13) {
       if (input) {
+        poof.play();
         if (input.toUpperCase().includes(drawWord.toUpperCase())) {
           socket.emit("guessedCorrect", { user: localStorageData, room });
           dispatch({ type: "SET_GUESS", payload: true });

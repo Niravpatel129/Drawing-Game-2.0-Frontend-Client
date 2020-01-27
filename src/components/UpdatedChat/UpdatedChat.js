@@ -4,6 +4,14 @@ import SocketContext from "../../context";
 import Message from "../Message/Message";
 import "./UpdatedChat.scss";
 
+const poof = new Audio(
+  "https://raw.githubusercontent.com/Niravpatel129/World-Shooter-game-browser-multiplayer-online-/master/public/assets/poof.mp3"
+);
+
+poof.load();
+
+poof.volume = 0.2;
+
 function UpdatedChat() {
   let { socket } = useContext(SocketContext);
   const dispatch = useDispatch();
@@ -41,6 +49,11 @@ function UpdatedChat() {
   const submitMessage = e => {
     if (e.charCode === 13) {
       if (input) {
+        if (poof.paused) {
+          poof.play();
+        } else {
+          poof.currentTime = 0;
+        }
         if (input.toUpperCase().includes(drawWord.toUpperCase())) {
           socket.emit("guessedCorrect", { user: localStorageData, room });
           dispatch({ type: "SET_GUESS", payload: true });
