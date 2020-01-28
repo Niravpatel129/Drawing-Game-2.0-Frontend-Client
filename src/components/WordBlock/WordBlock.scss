@@ -3,7 +3,7 @@
   top: 8%; /* position the top  edge of the element at the middle of the parent */
   left: 50%; /* position the left edge of the element at the middle of the parent */
   z-index: 999;
-
+  white-space: nowrap;
   transform: translate(-50%, -50%);
 
   font-size: 20px;
@@ -15,6 +15,7 @@
       margin: 4px;
       border-bottom: 5px solid black;
       width: 25px;
+      font-weight: 1000;
     }
   }
   -moz-user-select: none;

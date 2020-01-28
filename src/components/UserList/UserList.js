@@ -51,7 +51,7 @@ function UserList() {
     });
 
     socket.on("getAllUsers", res => {
-      updateUsers(res);
+      if (res !== users) updateUsers(res);
     });
 
     socket.on("sendTime", res => {
@@ -64,7 +64,7 @@ function UserList() {
         }
       }
     });
-  }, [socket, room]);
+  }, [socket, room, users]);
 
   useEffect(() => {
     if (drawerName) {

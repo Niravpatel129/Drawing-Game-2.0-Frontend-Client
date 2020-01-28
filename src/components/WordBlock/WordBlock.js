@@ -44,6 +44,8 @@ function WordBlock() {
     }
 
     return word.split("").map((i, index) => {
+      if (i === " ") {
+      }
       if (!canDraw) {
         if (guessedCorrect || showingWordIndex.indexOf(index) !== -1) {
           colorPreset = "Black";
@@ -54,7 +56,14 @@ function WordBlock() {
 
       return (
         <span style={{ color: colorPreset }} key={index}>
-          <p style={{ color: colorPreset }}>{i}</p>
+          <p
+            style={{
+              color: colorPreset,
+              borderBottom: i === " " ? "none" : "5px solid black"
+            }}
+          >
+            {i}
+          </p>
         </span>
       );
     });
