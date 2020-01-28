@@ -98,6 +98,7 @@ function RoomList() {
 
   const loginAsGuest = () => {
     console.log("login as guest");
+    let imgId = Math.floor(Math.random() * 100);
     let nickname = "Guest";
     Swal.fire({
       title: "set Nickname",
@@ -109,7 +110,7 @@ function RoomList() {
           googleId: Math.floor(
             Math.random() * 1000000000000000000000
           ).toString(),
-          imageUrl: "https://loremflickr.com/50/50",
+          imageUrl: `https://i.picsum.photos/id/${imgId}/50/50.jpg`,
           email: "guest@gmail.com",
           name: nickname || "Guest",
           givenName: "guest",

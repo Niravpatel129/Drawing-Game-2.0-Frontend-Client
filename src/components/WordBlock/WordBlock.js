@@ -12,12 +12,6 @@ function WordBlock() {
   const clock = useSelector(state => state.timeReducer);
 
   useEffect(() => {
-    if (clock) {
-      // console.log(clock);
-    }
-  }, [clock]);
-
-  useEffect(() => {
     socket.on("sendTime", res => {
       const time = res.find(i => i.roomId === room);
       if (time) setWord(time.gameData.word);
@@ -51,15 +45,12 @@ function WordBlock() {
 
     return word.split("").map((i, index) => {
       if (!canDraw) {
-        if (showingWordIndex.indexOf(index) !== -1) {
+        if (guessedCorrect || showingWordIndex.indexOf(index) !== -1) {
           colorPreset = "Black";
         } else {
           colorPreset = "Transparent";
         }
       }
-      // index === 1 || index === 2
-      //   ? (colorPreset = "black")
-      //   : (colorPreset = "transparent");
 
       return (
         <span style={{ color: colorPreset }} key={index}>

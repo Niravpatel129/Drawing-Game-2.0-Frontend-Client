@@ -3,6 +3,7 @@ import "./UserList.scss";
 import SocketContext from "../../context";
 import { useSelector, useDispatch } from "react-redux";
 import ProfileCard from "../ProfileCard/ProfileCard";
+import FlipMove from "react-flip-move";
 
 function UserList() {
   const localStorageData = JSON.parse(localStorage.getItem("loginUserInfo"));
@@ -106,8 +107,10 @@ function UserList() {
     <div className="UserList">
       <h2>Ranking</h2>
       <div className="usersparent" id="parent">
-        <div className="users" id="child">
-          {renderUser()}
+        <div className="users" id="child" style={{ position: "relative" }}>
+          <FlipMove duration={500} easing="ease-in-out">
+            {renderUser()}
+          </FlipMove>
         </div>
       </div>
       <img
