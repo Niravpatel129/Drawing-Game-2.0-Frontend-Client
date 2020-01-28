@@ -60,3 +60,10 @@ export const setWidth = action => {
     payload: action
   };
 };
+
+export const setStatus = action => {
+  return {
+    type: "SET_STATUS",
+    payload: action
+  };
+};

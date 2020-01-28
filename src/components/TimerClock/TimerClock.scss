@@ -1,21 +1,12 @@
 .TimerClock-container {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 30px;
+  left: 30px;
   font-weight: bolder;
   z-index: 999;
 
   .TimerClock {
-    margin-left: 10px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 24px;
-    color: #fff;
-    line-height: 40px;
-    text-align: center;
-    background: gray;
-    opacity: 0.4;
+    width: 60px;
   }
 
   -moz-user-select: none;

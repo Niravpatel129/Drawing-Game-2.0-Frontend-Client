@@ -14,11 +14,15 @@ function StatusMessage() {
   socket.on("gameStart", () => {
     setStatus("Game In Progress");
     setGameStarted(true);
+    dispatch({ type: "SET_STATUS", payload: true });
   });
 
   socket.on("gameEnded", () => {
     setStatus("Game Not Started");
     dispatch({ type: "SET_DRAW", payload: false });
+    console.log("game ended");
+    dispatch({ type: "SET_STATUS", payload: false });
+
     setGameStarted(false);
   });
 
