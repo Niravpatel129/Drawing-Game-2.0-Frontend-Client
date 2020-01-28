@@ -128,7 +128,7 @@ function UpdatedChat() {
             onKeyPress={submitMessage}
             placeholder={placeholder}
             disabled={canDraw || guessedCorrect}
-            maxlength="18"
+            maxLength="18"
           ></input>
         </div>
       </div>
