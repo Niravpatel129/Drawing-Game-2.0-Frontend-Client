@@ -105,21 +105,21 @@ function RoomList() {
     }).then(res => {
       if (res.value) {
         nickname = res.value;
+        let guestUser = {
+          googleId: Math.floor(
+            Math.random() * 1000000000000000000000
+          ).toString(),
+          imageUrl: "https://loremflickr.com/50/50",
+          email: "guest@gmail.com",
+          name: nickname || "Guest",
+          givenName: "guest",
+          familyName: "guest",
+          guest: true
+        };
+        localStorage.setItem("loginUserInfo", JSON.stringify(guestUser));
+        setlocalStorageData(JSON.parse(localStorage.getItem("loginUserInfo")));
       }
     });
-
-    let guestUser = {
-      googleId: Math.floor(Math.random() * 1000000000000000000000),
-      imageUrl: "https://loremflickr.com/50/50",
-      email: "guest@gmail.com",
-      name: nickname || "Guest",
-      givenName: "guest",
-      familyName: "guest",
-      guest: true
-    };
-
-    localStorage.setItem("loginUserInfo", JSON.stringify(guestUser));
-    setlocalStorageData(JSON.parse(localStorage.getItem("loginUserInfo")));
   };
 
   return (
