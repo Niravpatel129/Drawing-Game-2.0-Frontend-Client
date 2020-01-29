@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProfileCard.scss";
+import ReactTooltip from "react-tooltip";
 
 class ProfileCard extends React.Component {
   render() {
@@ -7,8 +8,6 @@ class ProfileCard extends React.Component {
     const border = drawing ? "2px solid white" : "none";
     return (
       <div className="ProfileCard tooltip">
-        <span className="tooltiptext">{name || "user"}</span>
-
         {index === 0 ? (
           <img
             alt="crown"
@@ -18,16 +17,19 @@ class ProfileCard extends React.Component {
         ) : (
           ""
         )}
-        <div className="imageContainer" style={{ border: border }}>
-          <img
-            alt="avatar"
-            src={
-              src ||
-              "https://lh3.googleusercontent.com/-ExcCE_u-6AA/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3re0f6aLElaFPaWzTzCEPQKovJ8fsw/s96-c/photo.jpg"
-            }
-          ></img>
+        <div data-tip={name}>
+          <div className="imageContainer" style={{ border: border }}>
+            <img
+              alt="avatar"
+              src={
+                src ||
+                "https://lh3.googleusercontent.com/-ExcCE_u-6AA/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3re0f6aLElaFPaWzTzCEPQKovJ8fsw/s96-c/photo.jpg"
+              }
+            ></img>
+          </div>
+          <p>{points.toLocaleString("en", { useGrouping: true }) || 0}pts</p>
         </div>
-        <p>{points.toLocaleString("en", { useGrouping: true }) || 0}pts</p>
+        <ReactTooltip place="top" type="dark" effect="solid" />
       </div>
     );
   }

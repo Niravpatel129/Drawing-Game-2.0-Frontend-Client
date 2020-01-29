@@ -16,11 +16,11 @@ function UserList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (roomData && roomData.gameData.drawer) {
-      if (roomData.gameData.drawer.user) {
+    if (roomData && roomData?.gamedata.drawer) {
+      if (roomData?.gamedata.drawer.user) {
         if (
           localStorageData.googleId ===
-          roomData.gameData.drawer.user.googleUserInfo.googleId
+          roomData?.gamedata.drawer.user.googleUserInfo.googleId
         ) {
           dispatch({ type: "SET_DRAW", payload: true });
         } else {
@@ -29,7 +29,7 @@ function UserList() {
       }
     }
     if (roomData) {
-      if (users.length >= 2 && !roomData.gameData.gameStarted) {
+      if (users.length >= 2 && !roomData?.gamedata.gameStarted) {
         socket.emit("gameStart", room);
       }
     }
@@ -57,10 +57,10 @@ function UserList() {
     socket.on("sendTime", res => {
       const draw = res?.find(i => i.roomId === room);
       setRoomData(draw);
-      if (draw?.gameData?.drawer) {
-        if (draw && draw?.gameData?.drawer?.user) {
-          updateDrawerName(draw.gameData.drawer.user.googleUserInfo.name);
-          updateDrawer(draw.gameData.drawer.user.googleUserInfo.googleId);
+      if (draw?.gamedata?.drawer) {
+        if (draw && draw?.gamedata?.drawer?.user) {
+          updateDrawerName(draw?.gamedata.drawer.user.googleUserInfo.name);
+          updateDrawer(draw?.gamedata.drawer.user.googleUserInfo.googleId);
         }
       }
     });
@@ -85,7 +85,7 @@ function UserList() {
       return sortedUsers.map((i, index) => {
         const drawing =
           i.user.googleUserInfo.googleId === drawerId &&
-          roomData.gameData.gameStarted;
+          roomData?.gamedata.gameStarted;
         return (
           <ProfileCard
             index={index}
@@ -106,12 +106,10 @@ function UserList() {
   return (
     <div className="UserList">
       <h2>Ranking</h2>
-      <div className="usersparent" id="parent">
-        <div className="users" id="child" style={{ position: "relative" }}>
-          <FlipMove duration={500} easing="ease-in-out">
-            {renderUser()}
-          </FlipMove>
-        </div>
+      <div className="UserWrapper disable-scrollbars" id="parent">
+        <FlipMove className="FlipMove" duration={500} easing="ease-in-out">
+          {renderUser()}
+        </FlipMove>
       </div>
       <img
         onClick={settings}

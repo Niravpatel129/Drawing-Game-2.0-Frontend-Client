@@ -14,7 +14,7 @@ function WordBlock() {
   useEffect(() => {
     socket.on("sendTime", res => {
       const time = res.find(i => i.roomId === room);
-      if (time) setWord(time.gameData.word);
+      if (time) setWord(time?.gamedata.word);
     });
   }, [socket, word, room]);
 

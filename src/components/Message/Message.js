@@ -2,14 +2,16 @@ import React from "react";
 import "./Message.scss";
 
 import { EmojioneV4 } from "react-emoji-render";
+import ReactTooltip from "react-tooltip";
 
 function Message({ name, message, src, style }) {
   return (
     <>
       <div className="MessageContainer tooltip">
-        <span className="tooltiptext">{name || "Admin"}</span>
+        {/* <span className="tooltiptext">{name || "Admin"}</span> */}
+        <ReactTooltip place="top" type="dark" effect="solid" />
 
-        <div className="imageContainer">
+        <div className="imageContainer" data-tip={name || "Admin"}>
           <img
             src={
               src ||

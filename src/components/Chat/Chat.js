@@ -23,7 +23,7 @@ function Chat() {
   useEffect(() => {
     socket.on("sendTime", res => {
       const draw = res.find(i => i.roomId === room);
-      setDrawWord(draw.gameData.word);
+      setDrawWord(draw?.gamedata.word);
     });
   }, [room, socket, drawWord]);
 

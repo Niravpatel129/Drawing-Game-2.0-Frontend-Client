@@ -16,8 +16,8 @@ function TimerClock() {
     socket.on("sendTime", res => {
       const time = res.find(i => i.roomId === room);
       if (time) {
-        setTime(time.gameData.timer);
-        dispatch({ type: "SET_TIME", payload: time.gameData.timer });
+        setTime(time?.gamedata.timer);
+        dispatch({ type: "SET_TIME", payload: time?.gamedata.timer });
       }
     });
   }, [socket, room, dispatch, gameStatus]);

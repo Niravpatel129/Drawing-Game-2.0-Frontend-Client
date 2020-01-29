@@ -37,7 +37,7 @@ function UpdatedChat() {
   useEffect(() => {
     socket.on("sendTime", res => {
       const draw = res.find(i => i.roomId === room);
-      setDrawWord(draw.gameData.word);
+      setDrawWord(draw?.gamedata?.word);
     });
   }, [room, socket, drawWord]);
 
@@ -128,7 +128,7 @@ function UpdatedChat() {
             onKeyPress={submitMessage}
             placeholder={placeholder}
             disabled={canDraw || guessedCorrect}
-            maxLength="2"
+            maxLength="24"
           ></input>
         </div>
       </div>
