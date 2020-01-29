@@ -16,11 +16,11 @@ function UserList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (roomData && roomData?.gamedata.drawer) {
-      if (roomData?.gamedata.drawer.user) {
+    if (roomData && roomData?.gamedata?.drawer) {
+      if (roomData?.gamedata?.drawer.user) {
         if (
           localStorageData.googleId ===
-          roomData?.gamedata.drawer.user.googleUserInfo.googleId
+          roomData?.gamedata?.drawer.user.googleUserInfo.googleId
         ) {
           dispatch({ type: "SET_DRAW", payload: true });
         } else {
@@ -59,8 +59,8 @@ function UserList() {
       setRoomData(draw);
       if (draw?.gamedata?.drawer) {
         if (draw && draw?.gamedata?.drawer?.user) {
-          updateDrawerName(draw?.gamedata.drawer.user.googleUserInfo.name);
-          updateDrawer(draw?.gamedata.drawer.user.googleUserInfo.googleId);
+          updateDrawerName(draw?.gamedata?.drawer.user.googleUserInfo.name);
+          updateDrawer(draw?.gamedata?.drawer.user.googleUserInfo.googleId);
         }
       }
     });

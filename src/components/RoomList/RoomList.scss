@@ -27,20 +27,18 @@
     border: 1px solid black;
     width: 40%;
     height: 10%;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-bottom: 17px;
     margin: 0 auto;
-
-    h3 {
-      width: 50%;
-    }
+    padding: 0px 59px;
+    font-size: 19px;
 
     button {
       align-self: center;
-      height: 21px;
+      height: 28px;
       font-size: 14px;
 
-      width: 12%;
+      width: 16%;
       background-color: whitesmoke;
       border-radius: 10px;
     }

@@ -105,7 +105,11 @@ function RoomList() {
       input: "text"
     }).then(res => {
       if (res.value) {
-        nickname = res.value;
+        nickname =
+          res.value
+            .split(/\s+/)
+            .slice(0, 10)
+            .join(" ") || "Guest";
         let guestUser = {
           googleId: Math.floor(
             Math.random() * 1000000000000000000000
