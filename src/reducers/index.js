@@ -40,7 +40,10 @@ const notificationMessageReducer = (state = "", action) => {
   }
 };
 
-const SpinnerReducer = (currentSpinnerMode = true, action) => {
+const SpinnerReducer = (
+  currentSpinnerMode = { showing: false, message: "Connecting..." },
+  action
+) => {
   if (action.type === "TOGGLE_LOADING_SPINNER") {
     return action.payload;
   }

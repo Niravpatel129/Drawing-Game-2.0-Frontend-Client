@@ -3,12 +3,12 @@ import "./LoadingSpinner.scss";
 import { useSelector } from "react-redux";
 
 function LoadingSpinner() {
-  const Loading = useSelector(state => state.SpinnerReducer);
-
+  const { showing, message } = useSelector(state => state.SpinnerReducer);
+  console.log(showing);
   return (
     <div
       className="LoadingSpinner"
-      style={{ display: Loading ? "flex" : "none" }}
+      style={{ display: showing ? "flex" : "none" }}
     >
       <div className="lds-ring">
         <div></div>
@@ -16,6 +16,7 @@ function LoadingSpinner() {
         <div></div>
         <div></div>
       </div>
+      <p>{message || "Loading..."}</p>
     </div>
   );
 }

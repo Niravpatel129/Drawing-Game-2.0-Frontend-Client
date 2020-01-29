@@ -16,7 +16,18 @@ const SocketProvider = props => {
 
   useEffect(() => {
     socket.on("connected", () => {
-      dispatch({ type: "TOGGLE_LOADING_SPINNER", payload: false });
+      dispatch({
+        type: "TOGGLE_LOADING_SPINNER",
+        payload: { showing: false, message: "Connecting..." }
+      });
+    });
+
+    socket.on("connect_error", () => {
+      console.log("connect failed");
+      dispatch({
+        type: "TOGGLE_LOADING_SPINNER",
+        payload: { showing: true, message: "Server down for maintenance..." }
+      });
     });
   }, [dispatch]);
 

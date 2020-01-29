@@ -9,6 +9,7 @@
   position: absolute;
   top: 0;
   z-index: 1000;
+  flex-direction: column;
 
   .lds-ring {
     display: inline-block;
@@ -44,5 +45,9 @@
     100% {
       transform: rotate(360deg);
     }
+  }
+
+  p {
+    color: white;
   }
 }
