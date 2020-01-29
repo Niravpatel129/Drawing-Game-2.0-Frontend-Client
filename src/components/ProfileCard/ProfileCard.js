@@ -19,7 +19,12 @@ class ProfileCard extends React.Component {
         )}
         <div data-tip={name}>
           <div className="imageContainer" style={{ border: border }}>
+            <div
+              className="pencilWrapper"
+              style={{ display: drawing ? "block" : "none" }}
+            ></div>
             <img
+              className="avatar"
               alt="avatar"
               src={
                 src ||
@@ -29,6 +34,7 @@ class ProfileCard extends React.Component {
           </div>
           <p>{points.toLocaleString("en", { useGrouping: true }) || 0}pts</p>
         </div>
+
         <ReactTooltip place="top" type="dark" effect="solid" />
       </div>
     );

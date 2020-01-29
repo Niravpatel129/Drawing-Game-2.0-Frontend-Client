@@ -23,7 +23,7 @@ function TimerClock() {
   }, [socket, room, dispatch, gameStatus]);
   return (
     <div className="TimerClock-container">
-      {time !== 65 && (
+      {time !== 65 && time !== 0 && (
         <div className="TimerClock">
           <CircularProgressbar
             strokeWidth={13}

@@ -127,7 +127,7 @@ function UpdatedChat() {
             onChange={e => changeInput(e.target.value)}
             onKeyPress={submitMessage}
             placeholder={placeholder}
-            disabled={canDraw || guessedCorrect}
+            disabled={canDraw || guessedCorrect || false}
             maxLength="24"
           ></input>
         </div>
