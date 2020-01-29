@@ -55,10 +55,10 @@ function UserList() {
     });
 
     socket.on("sendTime", res => {
-      const draw = res.find(i => i.roomId === room);
+      const draw = res?.find(i => i.roomId === room);
       setRoomData(draw);
-      if (draw.gameData.drawer) {
-        if (draw && draw.gameData.drawer.user) {
+      if (draw?.gameData?.drawer) {
+        if (draw && draw?.gameData?.drawer?.user) {
           updateDrawerName(draw.gameData.drawer.user.googleUserInfo.name);
           updateDrawer(draw.gameData.drawer.user.googleUserInfo.googleId);
         }
