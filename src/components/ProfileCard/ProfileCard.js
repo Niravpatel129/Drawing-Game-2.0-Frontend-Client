@@ -5,10 +5,10 @@ import ReactTooltip from "react-tooltip";
 class ProfileCard extends React.Component {
   render() {
     const { src, points, drawing, index, name } = this.props;
-    const border = drawing ? "2px solid white" : "none";
+    const border = drawing ? "2.8px solid white" : "none";
     return (
       <div className="ProfileCard tooltip">
-        {index === 0 ? (
+        {index === 0 && points !== 0 ? (
           <img
             alt="crown"
             className="crown"
