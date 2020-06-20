@@ -114,7 +114,7 @@ function RoomList() {
           googleId: Math.floor(
             Math.random() * 1000000000000000000000
           ).toString(),
-          imageUrl: `https://i.picsum.photos/id/${imgId}/50/50.jpg`,
+          imageUrl: `https://picsum.photos/id/${imgId}/50/50`,
           email: "guest@gmail.com",
           name: nickname || "Guest",
           givenName: "guest",
