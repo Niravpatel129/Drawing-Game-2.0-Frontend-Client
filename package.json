@@ -5,7 +5,7 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^10.0.1",
-    "@testing-library/user-event": "^10.0.0",
+    "@testing-library/user-event": "^13.1.9",
     "glamor": "^2.20.40",
     "install": "^0.13.0",
     "node-sass": "^4.13.1",
